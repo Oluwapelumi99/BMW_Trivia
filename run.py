@@ -16,20 +16,43 @@ else:
 
 def get_user_answer_1(user_answer):
     if answer.lower() == 'a':
-        print(f"Welldone! {user_answer} is the correct answer")
+        print(f"[bold blue]Welldone! {user_answer} is the correct answer")
     else:
-        print('[blue]"Sorry option a is the correct answer"')    
+        print('[italic bold white]"Sorry option a is the correct answer"')    
  
 answer= input('[bold blue]1. What does BMW stand for? \n A.Bayerische Motoren Werke \n B. \n Pick your answer: ')
 get_user_answer_1(answer)
 
+
 def get_user_answer_2(user_answer):
     if answer.lower() == 'b':
-        print(f"Welldone! {user_answer} is the correct answer")
+        print(f"[bold blue]Welldone! {user_answer} is the correct answer")
     else:
-        print('[blue]"Sorry option b is the correct answer"')
+        print('[bold white]"Sorry option b is the correct answer"')
 answer = input('[bold white]2. What is the slogan of BMW? \n A. The Ultimate Driving Power \n B. Sheer Driving Pleasure \n C. Enjoy the Ride \n D. Joy of discovery \n Pick your answer: ')
 get_user_answer_2(answer)    
    
-      
+def get_user_answer_3(user_answer):
+    if answer.lower() == 'c':
+        print(f"[bold blue]Welldone! {user_answer} is the correct answer")
+    else:
+        print('[bold white]"Sorry option c is the correct answer"')
+answer = input('[bold white]2. What is the BMW M series? \n A. A line of electric cars \n B. An SUV for off-roading \n C. A line of performance cars \n D. A line of luxury sedan \n Pick your answer: ')
+get_user_answer_3(answer)  
 
+
+def get_user_answer_4(user_answer):
+    if answer.lower() == 'd':
+        print(f"[bold blue]Welldone! {user_answer} is the correct answer")
+    else:
+        print('[blue]"Sorry option c is the correct answer"')
+answer = input('[bold white]2. What was the name of BMW\'s first car? \n A. 3 Series \n B. 5 Series \n C. 7 Series\n D. Dixi \n Pick your answer: ')
+get_user_answer_4(answer)  
+
+def get_user_answer_5(user_answer):
+    if answer.lower() == 'c':
+        print(f"[bold blue]Welldone! {user_answer} is the correct answer")
+    else:
+        print('[blue]"Sorry option c is the correct answer"')
+answer = input('[bold white]2. What year was the BMW 3 Series first intoduced? \n A. 1969 \n B. 1961 \n C. 1975\n D. 1984 \n Pick your answer: ')
+get_user_answer_5(answer)  
