@@ -14,10 +14,22 @@ else:
     print('[bold white] Wrong input. Please try again..')
 
 
-def get_user_answer(user_answer):
+def get_user_answer_1(user_answer):
     if answer.lower() == 'a':
-        print(f"Correct! {user_answer} is the correct answer")
-answer = input('[blue]What does BMW stand for? \n A.Bayerische Motoren Werke \n B. \n Pick your answer: ')
-get_user_answer(answer)  
+        print(f"Welldone! {user_answer} is the correct answer")
+    else:
+        print('[blue]"Sorry option a is the correct answer"')    
+ 
+answer= input('[bold blue]1. What does BMW stand for? \n A.Bayerische Motoren Werke \n B. \n Pick your answer: ')
+get_user_answer_1(answer)
+
+def get_user_answer_2(user_answer):
+    if answer.lower() == 'b':
+        print(f"Welldone! {user_answer} is the correct answer")
+    else:
+        print('[blue]"Sorry option b is the correct answer"')
+answer = input('[bold white]2. What is the slogan of BMW? \n A. The Ultimate Driving Power \n B. Sheer Driving Pleasure \n C. Enjoy the Ride \n D. Joy of discovery \n Pick your answer: ')
+get_user_answer_2(answer)    
+   
       
 
