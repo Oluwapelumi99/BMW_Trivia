@@ -2,23 +2,21 @@
 # You can delete these comments, but do not change the name of this file
 # Write your code to expect a terminal of 80 characters wide and 24 rows high
 
-from rich import print 
-print('[bold blue]Welcome to my BMW Trivia!!')
-score = 0 
+from rich import print    
+score = 0
 start_trivia = True
 print('[bold blue]Do you want to start quiz?')
 while start_trivia:
     try:
         continue_trivia = input(" yes/no  ")
         if continue_trivia.lower() == 'yes':
-            print('[bold blue] Brace yourself for a challenge!')
+            print('[bold blue] Brace yourself for a challenge! \n Read instructions carefully. \n There are 20 questions in this Quiz, pick your answer by inputing an option between A-D.')
             break  
-        elif continue_trivia.lower() == 'no':           
+        elif continue_trivia.lower() == 'no':
             print('[bold blue] Sad to see you go this time')
-            start_trivia = False
+            start_trivia == False                      
     except:
         print('[bold white] Wrong input. Please try again..')
-
 def get_user_answer_0(user_answer):
     if answer.lower() == 'a':
         print(f"[bold blue]Welldone! {user_answer} is the correct answer")
@@ -230,8 +228,10 @@ get_user_answer_19(answer)
 
 def get_result(user_score):
     print(f'[bold blue]You got {user_score} out of 20 questions right! ')
-    print('You got ' + str((user_score/4) *100) + '%. ')
+    print(f'[bold blue]You got {user_score /20 *100}%')
 get_result(score)   
+
+
 
 
 
