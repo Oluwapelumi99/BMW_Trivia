@@ -1,10 +1,26 @@
 # Your code goes here.
 # You can delete these comments, but do not change the name of this file
 # Write your code to expect a terminal of 80 characters wide and 24 rows high
+from rich import print
+import gspread
+# import os
+from google.oauth2.service_account import Credentials
 
-from rich import print 
-from rich import pretty
-print('[bold blue]WELCOME TO MY BMW TRIVIA!!! :dance:')   
+SCOPE = [
+    "https://www.googleapis.com/auth/spreadsheets",
+    "https://www.googleapis.com/auth/drive.file",
+    "https://www.googleapis.com/auth/drive"
+    ]
+CREDS = Credentials.from_service_account_file('secrets.json')
+SCOPED_CREDS = CREDS.with_scopes(SCOPE)
+GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
+SHEET = GSPREAD_CLIENT.open('Bmw_trivia')
+
+print('[bold blue]WELCOME TO MY BMW TRIVIA!!! :dance:') 
+
+# import ascii_magic
+# output = ascii_magic.from_images_file('IMG_9484.JPG',columns=200,char='#') 
+# ascii_magic.to_terminal(output) 
 score = 0
 start_trivia = True
 while start_trivia:
