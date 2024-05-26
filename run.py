@@ -385,12 +385,16 @@ for quiz_question in quiz_questions:
     while user_answer:
         user_answer = input('Pick your answer: \n').upper()
         if user_answer == quiz_question['correct_answer']:
-            print(f'[bold blue]Well done! {user_answer} is the correct answer :smile: \n{quiz_question['comment']}')
+            print(f"[bold blue]Well done! {user_answer} is the correct answer :smile: \n")
             score += 1
             break
+            if 'comment' in quiz_questions:
+                print(quiz_question['comment'])
         elif user_answer in quiz_question['incorrect_answer']:
-            print(f'[bold blue]Sorry {quiz_question['correct_answer']} is the correct answer :thumbsdown: \n{quiz_question['comment']}')
+            print(f"[bold blue]Sorry {quiz_question['correct_answer']} is the correct answer :thumbsdown: \n")
             break
+            if 'comment' in quiz_questions:
+                print(quiz_question['comment'])
         else:
             print('[bold blue]Incorrect Input. Please pick an option from A-D.')
 def get_result(user_score):
