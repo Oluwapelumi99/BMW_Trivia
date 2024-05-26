@@ -387,14 +387,14 @@ for quiz_question in quiz_questions:
         if user_answer == quiz_question['correct_answer']:
             print(f"[bold blue]Well done! {user_answer} is the correct answer :smile: \n")
             score += 1
-            break
-            if 'comment' in quiz_questions:
+            if 'comment' in quiz_question:
                 print(quiz_question['comment'])
+                break
         elif user_answer in quiz_question['incorrect_answer']:
             print(f"[bold blue]Sorry {quiz_question['correct_answer']} is the correct answer :thumbsdown: \n")
-            break
-            if 'comment' in quiz_questions:
-                print(quiz_question['comment'])
+            if 'comment' in quiz_question:
+                print([bold blue],quiz_question['comment'])
+                break
         else:
             print('[bold blue]Incorrect Input. Please pick an option from A-D.')
 def get_result(user_score):
