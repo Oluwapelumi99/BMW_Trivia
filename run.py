@@ -19,7 +19,7 @@ def get_username(name):
     return input(name)
 def print_name(value_name):
     print(value_name)
-name = get_username('Enter your name:')
+name = get_username('Enter your name to start the quiz:')
 print_name(f'[bold blue]Hello {name}. WELCOME TO MY BMW TRIVIA!!! :smile:')
   
 # import ascii_magic
@@ -29,13 +29,15 @@ score = 0
 start_trivia = True
 while start_trivia:
     try:
-        continue_trivia = str(input("Do you want to start quiz? yes/no\n  "))
+        continue_trivia = input("Do you want to start quiz? yes/no\n  ")
         if continue_trivia.lower() == 'yes':
-            print('[bold blue] Brace yourself for a challenge :thumbsup:! \n Read instructions carefully. \n There are 20 questions in this Quiz, pick your answer by inputing an option between A-D.\n Goodluck!')
+            print('[bold blue] Brace yourself for some BMW history:thumbsup:! \n Read instructions carefully. \n There are 20 questions in this Quiz,'
+                  '\npick your answer by inputing an option between A-D.\n Goodluck!')
             break  
         elif continue_trivia.lower() == 'no':
             print('[bold blue] Sad to see you go this time')
-            start_trivia == False                     
+            start_trivia == False
+            get_user_choice()                     
     except Exception:
         print('[bold white] Wrong input. Please try again..')       
 question_1 = "1. What does BMW stand for? \n A. Bayerische Motoren Werke \n B. Brunswick Motoren Werke \n C. Borgholzzhausen Motoren Werke\n D. Berlin Motorenn Werke"
@@ -62,29 +64,62 @@ questions = {question_1: 'a', question_2: 'd',question_3: 'b', question_4: 'c', 
              question_10:'a', question_11: 'b', question_12: 'd', question_13:'d', question_14: 'a', question_15: 'd', question_16: 'd', question_17: 'c', 
              question_18: 'a', question_19: 'c', question_20:'b'}
 comments =  {question_1: 'BMW stands for Bayerische Motoren Werke, or translated into English,Bavarian Motor Works', 
-             question_2: 'While many think the blue and white checkered design is representative of a spinning aircraft propeller,' 
-             'it is in fact a combination of the Rapp Motorenwerke company from which BMW grew, and the colors of the Bavarian flag.',
+             question_2: '',
              question_3: 'The BMW slogan “Sheer Driving Pleasure” has evolved over the years from various brand claims in German.' 
-             'The term “pleasure” first appeared in the 1930s in BMW ads.', question_4: '', question_5: '', question_6: '', question_7: '', question_8: '', question_9: '', 
-             question_10:'', question_11: '', question_12: '', question_13:'', question_14: '', question_15: '', question_16: '', question_17: '', 
-             question_18: '', question_19: '', question_20:''}
+             '\nThe term “pleasure” first appeared in the 1930s in BMW ads.', 
+             question_4: 'The “M” in the BMW M Series stands for “Motorsport”, and the M Series was originally created to facilitate BMW\'s racing program.' 
+             '\nOver time, the BMW M program began to supplement their vehicle lineup with modified vehicle models, which are now available to the general public.', 
+             question_5: 'BMW became an automobile manufacturer in 1928 when it purchased Fahrzeugfabrik Eisenach,' 
+             '\nwhich built Austin Sevens at that time under licence (under the Dixi marque). The first car sold as a BMW was a rebadged Dixi called the BMW 3/15.', 
+             question_6: 'The BMW 3 Series is a line of compact executive cars manufactured by the German automaker BMW since May 1975.'
+             '\nIt is the successor to the 02 Series and has been produced in seven generations.', 
+             question_7: 'Conceived as a prototype in 1969, the BMW 1602e premiered at the 1972 Olympic Games in Munich. The battery powered Beemer could accelerate'
+             '\nfrom 0-31mph in 8.0 seconds,toppped out at 62mph, and had a range of about 19miles.', 
+             question_8: 'BMW Sauber were a constructor which competed in the Formula One World Championship between 2006 and 2009.' 
+             '\nThe team emerged as a result of the purchase of the Sauber team by BMW in 2006.', 
+             question_9: 'In 1973, the manufacturer opened its distinctive \'four-cylinder\'building in Munich, Germany.'
+             '\nIt is often cited as one of the most notable examples of architecture in Munich.', 
+             question_10: 'The BMW IIIa aircraft engine was known for good fuel economy and high-altitude performance.'
+             '\n The resulting orders for IIIa engines from the German military caused rapid expansion for BMW.', 
+             question_11: 'The \"Kidney grille\", first used in BMW\'s 1933 model 303, is named after kidneys because of its identical'
+             '\ndual structure, rather than the single grille design that was used by most cars at the time.', 
+             question_12: 'The 328 was first introdeced at the Eifelrennen race at the Nürburgring in 1936, where Ernst Henne drove'
+             '\nit to win the 2.0-litre class. The 328 had more than 100 class wins in 1937, including thr RAC Tourist Trophy,the'
+             '\nÖsterreichische Alpenfahrt,and the La Turbie hillclimb.', 
+             question_13: 'The BMW Z1 roadster was one of BMW Technik GmbH\'s first big projects. In addition to the unique door design,'
+             '\nthe Z1 body featured several other innovations: removable plastic body panels, a flat undertray, a roll-hope integrated'
+             '\ninto the windscreen surround and continuously zinc welded seams.', 
+             question_14: 'With standard seating for seven, the BMW X7 is more than just the biggest BMW ever built. It is advertised as '
+             '\n the most comfortable and luxurious Sports activity Vehicle in its class', 
+             question_15: 'In 1955, the BMW Isetta became the world\'s first mass-production car to achieve a fuel consumption of 3L/100km'
+             '\n(94mpg; 78mpg). It was the top-selling single-cylinder car in the world,with 161,728 units sold.', 
+             question_16: 'BMW\'s corporate history considers the founding date of Bayerische Flugzeugwerke(7 March 1916) to be the birth of the company.', 
+             question_17: 'BMW bega production of motorcycles in 1923, with the R32 model. The R32 established the boxer-twin, shaft-drive'
+             '\npowertrain layout that BMW would use for many years to come.', 
+             question_18: '', 
+             question_19: '', 
+             question_20: '' }
 for i in questions and comments:
     print(i)
     answer = input("pick you answer: \n")
     if answer.lower() == questions[i]:
-        print(f"[bold blue]Welldone! {answer}i s the correct answer :smile:\n{comments[i]}")
+        print(f"[bold blue]Welldone! {answer} is the correct answer :smile:\n{comments[i]}")
         score += 1
     else:
-        print(f'[bold blue]Sorry {questions[i]} is the correct answer :thumbsdown:')
+        print(f'[bold blue]Sorry {questions[i]} is the correct answer :thumbsdown:\n{comments[i]}')
 def get_result(user_score):
     print(f'[bold blue]You got {user_score} out of 20 questions right! ')
     print(f'[bold blue]You got {user_score /20 *100}%')
-get_result(score)   
+get_result(score)
 
-
-
-
-
+# def get_user_choice(quit_game):
+#     if choice.lower() == 'yes':
+#         print(f'[bold blue]You have decided to end the quiz. Your final percentage is {user_score /20 *100}%')
+#         break
+#     else:
+#         continue
+# choice = input('Do you want to end the quiz? yes/no: ')
+# get_user_choice(choice)
 
 
 
