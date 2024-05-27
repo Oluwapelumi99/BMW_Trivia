@@ -27,23 +27,26 @@ print_name(f'[bold blue]Hello {name}. WELCOME TO MY BMW TRIVIA!!! :smile:')
 # ascii_magic.to_terminal(output)
 
 score = 0
-start_trivia = True
-while start_trivia:
-    continue_trivia = input("Do you want to start quiz? yes/no\n  ")
-    if continue_trivia.lower() == 'yes':
-        break  
-    elif continue_trivia.lower() == 'no':
-        print('[bold blue] Sad to see you go this time')
-        start_trivia == False                   
-    else:
-        print('[bold blue] Wrong input. Please input yes or no')
+def start_trivia():
+    start_trivia = True
+    while start_trivia:
+        continue_trivia = input("Do you want to start quiz? yes/no\n  ")
+        if continue_trivia.lower() == 'yes':
+            break  
+        elif continue_trivia.lower() == 'no':
+            print('[bold blue] Sad to see you go this time')
+            start_trivia == False                   
+        else:
+            print('[bold blue] Wrong input. Please input yes or no')   
+
         
 print('[bold blue] Brace yourself for some BMW history:thumbsup: !'
 '\n'
 '\n Read instructions carefully.'
 '\n'
  'There are 20 questions in this Quiz,'
-'\n pick your answer by inputing an option between A-D.\n Goodluck!')       
+'\n pick your answer by inputing an option between A-D.\n Goodluck!')
+      
 
 quiz_questions = [
     {
@@ -393,7 +396,7 @@ for quiz_question in quiz_questions:
         elif user_answer in quiz_question['incorrect_answer']:
             print(f"[bold blue]Sorry {quiz_question['correct_answer']} is the correct answer :thumbsdown: \n")
             if 'comment' in quiz_question:
-                print([bold blue],quiz_question['comment'])
+                print(quiz_question['comment'])
                 break
         else:
             print('[bold blue]Incorrect Input. Please pick an option from A-D.')
@@ -401,17 +404,41 @@ def get_result(user_score):
     print(f'[bold blue]Hi {name} you got {user_score} out of 20 questions right! ')
     print(f'[bold blue]You got {user_score /20 *100}%')
 get_result(score)
+def get_user_choice():
+    try_again = True
+    while try_again:
+        try_again = input('Would you like to try quiz again? yes/no\n ')
+        if try_again.lower() == 'yes':
+            start_trivia()
+            pass  
+        elif try_again == 'no':
+            print(f'[bold blue]You have chosen to end the game. \nBye :smile:')
+            try_again == False
+        else:
+            print('[bold blue] Wrong input. Please input yes or no')
+get_user_choice()
+start_trivia()
 
-# def get_user_choice(play_again):
-#     if choice.lower() == 'yes':
-#         print(f'[bold blue]You have decided to end the quiz. Your final percentage is {user_score /20 *100}%')
-#        
-#     else:
-#         continue
-# choice = input('Do you try again? yes/no: ')
-# get_user_choice(choice)
+# def start_trivia():
+#     start_trivia = True
+#     while start_trivia:
+#         continue_trivia = input("Do you want to start quiz? yes/no\n  ")
+#         if continue_trivia.lower() == 'yes':
+#             break  
+#         elif continue_trivia.lower() == 'no':
+#             print('[bold blue] Sad to see you go this time')
+#             start_trivia == False                   
+#         else:
+#             print('[bold blue] Wrong input. Please input yes or no')   
 
-
+        
+# print('[bold blue] Brace yourself for some BMW history:thumbsup: !'
+# '\n'
+# '\n Read instructions carefully.'
+# '\n'
+#  'There are 20 questions in this Quiz,'
+# '\n pick your answer by inputing an option between A-D.\n Goodluck!')
+# start_trivia()       
 
 
 
