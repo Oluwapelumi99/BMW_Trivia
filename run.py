@@ -2,6 +2,9 @@
 # You can delete these comments, but do not change the name of this file
 # Write your code to expect a terminal of 80 characters wide and 24 rows high
 from rich import print
+from rich.console import Console
+
+console = Console()
 import gspread
 # import os
 from google.oauth2.service_account import Credentials
@@ -27,8 +30,9 @@ print_name(f'[bold blue]Hello {name}. WELCOME TO MY BMW TRIVIA!!! :smile:')
 # ascii_magic.to_terminal(output)
 
 score = 0
+start_trivia = True
 def start_trivia():
-    start_trivia = True
+    global start_trivia
     while start_trivia:
         continue_trivia = input("Do you want to start quiz? yes/no\n  ")
         if continue_trivia.lower() == 'yes':
@@ -38,6 +42,10 @@ def start_trivia():
             start_trivia == False                   
         else:
             print('[bold blue] Wrong input. Please input yes or no')   
+            print('[bold blue] Wrong input. Please input yes or no')   
+
+        
+            print('[bold blue] Wrong input. Please input yes or no')          
 
         
 print('[bold blue] Brace yourself for some BMW history:thumbsup: !'
@@ -46,7 +54,8 @@ print('[bold blue] Brace yourself for some BMW history:thumbsup: !'
 '\n'
  'There are 20 questions in this Quiz,'
 '\n pick your answer by inputing an option between A-D.\n Goodluck!')
-      
+     
+
 
 quiz_questions = [
     {
@@ -379,6 +388,7 @@ quiz_questions = [
     },
          
 ]
+
 print('---------------------------')
 for quiz_question in quiz_questions:
     print(quiz_question['question'])
@@ -388,36 +398,35 @@ for quiz_question in quiz_questions:
     while user_answer:
         user_answer = input('Pick your answer: \n').upper()
         if user_answer == quiz_question['correct_answer']:
-            print(f"[bold blue]Well done! {user_answer} is the correct answer :smile: \n")
+            print('[bold blue]Well done! ' + (user_answer) + ' is the correct answer :smile: \n' + (quiz_question['comment']))
             score += 1
-            if 'comment' in quiz_question:
-                print(quiz_question['comment'])
-                break
+            break
         elif user_answer in quiz_question['incorrect_answer']:
-            print(f"[bold blue]Sorry {quiz_question['correct_answer']} is the correct answer :thumbsdown: \n")
-            if 'comment' in quiz_question:
-                print(quiz_question['comment'])
-                break
+            print('[bold blue]Sorry ' + (quiz_question['correct_answer']) + ' is the correct answer :thumbsdown: \n' + (quiz_question['comment']))
+            break
         else:
             print('[bold blue]Incorrect Input. Please pick an option from A-D.')
+
 def get_result(user_score):
     print(f'[bold blue]Hi {name} you got {user_score} out of 20 questions right! ')
     print(f'[bold blue]You got {user_score /20 *100}%')
 get_result(score)
-def get_user_choice():
-    try_again = True
-    while try_again:
-        try_again = input('Would you like to try quiz again? yes/no\n ')
-        if try_again.lower() == 'yes':
-            start_trivia()
-            pass  
-        elif try_again == 'no':
-            print(f'[bold blue]You have chosen to end the game. \nBye :smile:')
-            try_again == False
-        else:
-            print('[bold blue] Wrong input. Please input yes or no')
-get_user_choice()
-start_trivia()
+
+try_again = True
+while try_again:
+    try_again = input('Would you like to try quiz again? yes/no\n ')
+    if try_again.lower() == 'yes':
+        start_trivia()
+        break  
+    elif try_again == 'no':
+        print(f'[bold blue]You have chosen to end the game. \nBye :smile:')
+        try_again == False
+        break
+    else:
+        print('[bold blue] Wrong input. Please input yes or no')
+start_trivia()    
+
+
 
 # def start_trivia():
 #     start_trivia = True
