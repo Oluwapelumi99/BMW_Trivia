@@ -2,12 +2,9 @@
 # You can delete these comments, but do not change the name of this file
 # Write your code to expect a terminal of 80 characters wide and 24 rows high
 from rich import print
-
-
 import gspread
 import os
 from google.oauth2.service_account import Credentials
-
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
@@ -17,19 +14,43 @@ CREDS = Credentials.from_service_account_file('creds.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('Bmw_trivia')
-
-scoreboard = SHEET.worksheet('scoreboard')
-
-data = scoreboard.get_all_values()
-
-print(data)
-
-def get_username(name):
-    return input(name)
+def get_username():   
+    """
+     Get names inputs from the user
+    """
+    while True:
+        print('[bold blue]Name must be less than 20 characters and more than 2 characters.Your name must not contain any special characters or spaces\n')
+        print('[bold blue]For example: '' [bold white]Christopher \n')
+        name = input('Enter your name to start the quiz: \n').strip()
+        if valid_name(name):
+            break
+    return name
 def print_name(value_name):
-    print(value_name)
-name = get_username('Enter your name to start the quiz:')
-print_name(f'[bold blue]Hello {name}. WELCOME TO MY BMW TRIVIA!!! :smile:')
+    """
+    Get username to print welcome message with user name in the termianl
+    """
+    print(f'[bold blue]Hello {value_name}. WELCOME TO MY BMW TRIVIA!!! :smile:\n')
+
+def valid_name(name):
+    '''
+    Gets Username and validates it.
+    '''
+    if len(name) > 20:
+        print('[bold blue]Name should be less than 20 characters\n')
+        return False
+
+    if len(name) < 3:
+        print('[bold blue]Name must be at least 3 characters\n')
+        return False
+
+    if not name.isalpha():
+        print('[bold blue]Name should not contain any special characters\n')
+        return False
+    return True
+
+username = get_username()
+print_name(username)
+
   
 # import ascii_magic
 # output = ascii_magic.from_images_file('IMG_9484.JPG',columns=200,char='#') 
@@ -40,7 +61,7 @@ start_trivia = True
 def start_trivia():
     global start_trivia
     while start_trivia:
-        continue_trivia = input("Do you want to start quiz? yes/no\n  ")
+        continue_trivia = input("Do you want to start quiz? yes/no \n  ")
         if continue_trivia.lower() == 'yes':
             break  
         elif continue_trivia.lower() == 'no':
@@ -51,13 +72,11 @@ def start_trivia():
                       
 print('[bold blue] Brace yourself for some BMW history:thumbsup: !'
 '\n'
-'\n Read instructions carefully.'
+'\n Read instructions carefully.\n'
 '\n'
- 'There are 20 questions in this Quiz,'
-'\n pick your answer by inputing an option between A-D.\n Goodluck!')
-     
-
-
+' There are 20 questions in this Quiz.\n'
+'\n Pick your answer by inputing an option between A-D.\n Goodluck! \n')
+start_trivia()
 quiz_questions = [
     {
         'question': '1. What does BMW stand for?'
@@ -77,6 +96,7 @@ quiz_questions = [
                 'C',
                 'D',
             ],
+        'incorrect_input':'',
         'comment': 'BMW stands for Bayerische Motoren Werke, or translated into English,Bavarian Motor Works'
         '\n',
     },
@@ -405,13 +425,19 @@ for quiz_question in quiz_questions:
         elif user_answer in quiz_question['incorrect_answer']:
             print('[bold blue]Sorry ' + (quiz_question['correct_answer']) + ' is the correct answer :thumbsdown: \n' + (quiz_question['comment']))
             break
+        elif user_answer == quiz_question['incorrect_input']:
+            print('plaese')   
         else:
             print('[bold blue]Incorrect Input. Please pick an option from A-D.')
 
-def get_result(user_score):
-    print(f'[bold blue]Hi {name} you got {user_score} out of 20 questions right! ')
-    print(f'[bold blue]You got {user_score /20 *100}%')
-get_result(score)
+# def get_result(user_score):
+#     """
+#      Get users score and increment it by 1 with each correct answer and provide the total score after 
+#      the player has completed the quiz.
+#     """
+#     print(f'[bold blue]Hi {name} you got {user_score} out of 20 questions right! ')
+#     print(f'[bold blue]You got {user_score /20 *100}%')
+# get_result(score)
 
 try_again = True
 while try_again:
@@ -422,7 +448,6 @@ while try_again:
     elif try_again == 'no':
         print(f'[bold blue]You have chosen to end the game. \nBye :smile:')
         try_again == False
-        break
     else:
         print('[bold blue] Wrong input. Please input yes or no')
 start_trivia()    
