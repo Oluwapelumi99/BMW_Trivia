@@ -2,11 +2,10 @@
 # You can delete these comments, but do not change the name of this file
 # Write your code to expect a terminal of 80 characters wide and 24 rows high
 from rich import print
-from rich.console import Console
 
-console = Console()
+
 import gspread
-# import os
+import os
 from google.oauth2.service_account import Credentials
 
 SCOPE = [
@@ -18,6 +17,13 @@ CREDS = Credentials.from_service_account_file('creds.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('Bmw_trivia')
+
+scoreboard = SHEET.worksheet('scoreboard')
+
+data = scoreboard.get_all_values()
+
+print(data)
+
 def get_username(name):
     return input(name)
 def print_name(value_name):
@@ -42,12 +48,7 @@ def start_trivia():
             start_trivia == False                   
         else:
             print('[bold blue] Wrong input. Please input yes or no')   
-            print('[bold blue] Wrong input. Please input yes or no')   
-
-        
-            print('[bold blue] Wrong input. Please input yes or no')          
-
-        
+                      
 print('[bold blue] Brace yourself for some BMW history:thumbsup: !'
 '\n'
 '\n Read instructions carefully.'
