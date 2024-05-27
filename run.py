@@ -1,6 +1,7 @@
 # Your code goes here.
 # You can delete these comments, but do not change the name of this file
 # Write your code to expect a terminal of 80 characters wide and 24 rows high
+import random
 from rich import print
 import gspread
 import os
@@ -411,7 +412,7 @@ quiz_questions = [
 ]
 
 print('---------------------------')
-for quiz_question in quiz_questions:
+for quiz_question in random.shuffle(quiz_questions):
     print(quiz_question['question'])
     for answer in quiz_question['choices']:
         print(answer)
@@ -430,14 +431,14 @@ for quiz_question in quiz_questions:
         else:
             print('[bold blue]Incorrect Input. Please pick an option from A-D.')
 
-# def get_result(user_score):
-#     """
-#      Get users score and increment it by 1 with each correct answer and provide the total score after 
-#      the player has completed the quiz.
-#     """
-#     print(f'[bold blue]Hi {name} you got {user_score} out of 20 questions right! ')
-#     print(f'[bold blue]You got {user_score /20 *100}%')
-# get_result(score)
+def get_result(user_score):
+    """
+     Get users score and increment it by 1 with each correct answer and provide the total score after 
+     the player has completed the quiz.
+    """
+    print(f'[bold blue]Hi {name} you got {user_score} out of 20 questions right! ')
+    print(f'[bold blue]You got {user_score /20 *100}%')
+get_result(score)
 
 try_again = True
 while try_again:
