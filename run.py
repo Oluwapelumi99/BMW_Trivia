@@ -109,8 +109,7 @@ quiz_questions = [
             'A. Blue & gold', 
             'B. Red & gold',
             'C. Red & White', 
-            'D. Blue & white'
-            '\n',
+            'D. Blue & white\n',
         ],
         'correct_answer': 'D',
         'incorrect_answer': ['A', 'B', 'C'],
@@ -412,7 +411,8 @@ quiz_questions = [
 ]
 
 print('---------------------------')
-for quiz_question in random.shuffle(quiz_questions):
+random.shuffle(quiz_questions)
+for quiz_question in quiz_questions:
     print(quiz_question['question'])
     for answer in quiz_question['choices']:
         print(answer)
@@ -425,9 +425,7 @@ for quiz_question in random.shuffle(quiz_questions):
             break
         elif user_answer in quiz_question['incorrect_answer']:
             print('[bold blue]Sorry ' + (quiz_question['correct_answer']) + ' is the correct answer :thumbsdown: \n' + (quiz_question['comment']))
-            break
-        elif user_answer == quiz_question['incorrect_input']:
-            print('plaese')   
+            break  
         else:
             print('[bold blue]Incorrect Input. Please pick an option from A-D.')
 
