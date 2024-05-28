@@ -109,6 +109,11 @@ Input validation has also been used with while loops to check if they want to st
 It can be seen that the quiz starts and prints the first question of the quiz to the terminal.
 <img width="752" alt="Screenshot 2024-05-27 at 22 58 29" src="https://github.com/Oluwapelumi99/Rock--paper-scissors/assets/156908824/70dc899a-f6be-4560-86a0-721363cc1eeb">
 
+- A screenshot of what happens when no is inputed to the terminal. It can be seen that the quiz ends.
+<img width="747" alt="Screenshot 2024-05-29 at 00 03 15" src="https://github.com/Oluwapelumi99/BMW_Trivia/assets/156908824/
+d3716040-0e89-4a99-a8ad-a129b079c691">
+
+
 - This is what happens when nothing was inputed to the terminal.
 <img width="753" alt="Screenshot 2024-05-27 at 23 07 16" src="https://github.com/Oluwapelumi99/Rock--paper-scissors/assets/156908824/10a06842-f6e2-4718-b886-417e8cde8df5">
 
