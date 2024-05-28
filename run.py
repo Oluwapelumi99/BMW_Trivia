@@ -15,6 +15,7 @@ CREDS = Credentials.from_service_account_file('creds.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('Bmw_trivia')
+
 def get_username():   
     """
      Get names inputs from the user
@@ -26,6 +27,7 @@ def get_username():
         if valid_name(name):
             break
     return name
+
 def print_name(value_name):
     """
     Get username to print welcome message with user name in the termianl
@@ -49,35 +51,26 @@ def valid_name(name):
         return False
     return True
 
-username = get_username()
-print_name(username)
-
   
 # import ascii_magic
 # output = ascii_magic.from_images_file('IMG_9484.JPG',columns=200,char='#') 
 # ascii_magic.to_terminal(output)
 
-score = 0
-start_trivia = True
-def start_trivia():
-    global start_trivia
+def start_trivia(score):
+    start_trivia = True
     while start_trivia:
         continue_trivia = input("Do you want to start quiz? yes/no \n  ")
         if continue_trivia.lower() == 'yes':
             break  
         elif continue_trivia.lower() == 'no':
             print('[bold blue] Sad to see you go this time')
-            start_trivia == False                   
+            quit()                  
         else:
-            print('[bold blue] Wrong input. Please input yes or no')   
-                      
-print('[bold blue] Brace yourself for some BMW history:thumbsup: !'
-'\n'
-'\n Read instructions carefully.\n'
-'\n'
-' There are 20 questions in this Quiz.\n'
-'\n Pick your answer by inputing an option between A-D.\n Goodluck! \n')
-start_trivia()
+            print('[bold blue] Wrong input. Please input yes or no')
+
+    game_loop(score)
+
+
 quiz_questions = [
     {
         'question': '1. What does BMW stand for?'
@@ -410,72 +403,80 @@ quiz_questions = [
          
 ]
 
-print('---------------------------')
-random.shuffle(quiz_questions)
-for quiz_question in quiz_questions:
-    print(quiz_question['question'])
-    for answer in quiz_question['choices']:
-        print(answer)
-    user_answer = True
-    while user_answer:
-        user_answer = input('Pick your answer: \n').upper()
-        if user_answer == quiz_question['correct_answer']:
-            print('[bold blue]Well done! ' + (user_answer) + ' is the correct answer :smile: \n' + (quiz_question['comment']))
-            score += 1
-            break
-        elif user_answer in quiz_question['incorrect_answer']:
-            print('[bold blue]Sorry ' + (quiz_question['correct_answer']) + ' is the correct answer :thumbsdown: \n' + (quiz_question['comment']))
-            break  
-        else:
-            print('[bold blue]Incorrect Input. Please pick an option from A-D.')
+def game_loop(score):
+    print('---------------------------')
+    random.shuffle(quiz_questions)
+    for quiz_question in quiz_questions:
+        print(quiz_question['question'])
+        for answer in quiz_question['choices']:
+            print(answer)
+        user_answer = True
+        while user_answer:
+            user_answer = input('Pick your answer: \n').upper()
+            if user_answer == quiz_question['correct_answer']:
+                print('[bold blue]Well done! ' + (user_answer) + ' is the correct answer :smile: \n' + (quiz_question['comment']))
+                score += 1
+                break
+            elif user_answer in quiz_question['incorrect_answer']:
+                print('[bold blue]Sorry ' + (quiz_question['correct_answer']) + ' is the correct answer :thumbsdown: \n' + (quiz_question['comment']))
+                break  
+            else:
+                print('[bold blue]Incorrect Input. Please pick an option from A-D.')
+                user_answer = True
 
-def get_result(user_score):
+def get_result(username, user_score):
     """
      Get users score and increment it by 1 with each correct answer and provide the total score after 
      the player has completed the quiz.
     """
-    print(f'[bold blue]Hi {name} you got {user_score} out of 20 questions right! ')
+    print(f'[bold blue]Hi {username} you got {user_score} out of 20 questions right! ')
     print(f'[bold blue]You got {user_score /20 *100}%')
-get_result(score)
 
-try_again = True
-while try_again:
-    try_again = input('Would you like to try quiz again? yes/no\n ')
-    if try_again.lower() == 'yes':
-        start_trivia()
-        break  
-    elif try_again == 'no':
-        print(f'[bold blue]You have chosen to end the game. \nBye :smile:')
-        try_again == False
-    else:
-        print('[bold blue] Wrong input. Please input yes or no')
-start_trivia()    
+def update_leaderboard(username, score):
+    """
+    Update Scoreboard worksheet to check for highest score
+    """
+    print('Updating score board')
+    score_worksheet = SHEET.worksheet('scoreboard')
+    score_worksheet.append_row(username, score)
+    print('none')
+    
+def play_again():
+    try_again = True
+    while try_again:
+        try_again = input('Would you like to try quiz again? yes/no\n ')
+        if try_again.lower() == 'yes':
+            start_trivia()
+            break  
+        elif try_again == 'no':
+            print(f'[bold blue]You have chosen to end the game. \nBye :smile:')
+            quit()
+        else:
+            print('[bold blue] Wrong input. Please input yes or no')
+            try_again = True
+    start_trivia()    
+
+def start():
+    score = 0
+    username = get_username()
+    print_name(username)                   
+    print('[bold blue] Brace yourself for some BMW history:thumbsup: !'
+    '\n'
+    '\n Read instructions carefully.\n'
+    '\n'
+    ' There are 20 questions in this Quiz.\n'
+    '\n Pick your answer by inputing an option between A-D.\n Goodluck! \n')
+    start_trivia(score)
+    get_result(username, score)
+    update_leaderboard(username, score)
+    # display_leaderboard()
+    play_again()
+    
+      
 
 
 
-# def start_trivia():
-#     start_trivia = True
-#     while start_trivia:
-#         continue_trivia = input("Do you want to start quiz? yes/no\n  ")
-#         if continue_trivia.lower() == 'yes':
-#             break  
-#         elif continue_trivia.lower() == 'no':
-#             print('[bold blue] Sad to see you go this time')
-#             start_trivia == False                   
-#         else:
-#             print('[bold blue] Wrong input. Please input yes or no')   
-
-        
-# print('[bold blue] Brace yourself for some BMW history:thumbsup: !'
-# '\n'
-# '\n Read instructions carefully.'
-# '\n'
-#  'There are 20 questions in this Quiz,'
-# '\n pick your answer by inputing an option between A-D.\n Goodluck!')
-# start_trivia()       
 
 
 
-
-
-
+start()
