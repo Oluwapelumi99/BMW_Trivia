@@ -121,6 +121,24 @@ d3716040-0e89-4a99-a8ad-a129b079c691">
 <img width="749" alt="Screenshot 2024-05-27 at 23 08 59" src="https://github.com/Oluwapelumi99/Rock--paper-scissors/assets/156908824/9a5719a3-5f8a-42b2-b061-2da441ecc552">
 
 
+###### Answer input
+- If the correct option is chosen from A-D, this is printed on the terminal.
+
+- if the incorrect option is chosen then this is printed to the terminal.
+
+- However, if something else is printed to the terminal asides the correct and incorrect answer such as space, null, special characters, this is the ouput.
+
+
+
+
+###### Try again input
+- If yes is printed into the terminal to try the quiz agin, the quiz starts again.
+
+- If no is printed into the terminal, the quiz ends and 'Sad to see you go' is printed to the terminal.
+
+- However, if anything else asides yes or no is printed to the terminal, the input is not accepted and user is asked to input a valid response.
+
+
 
 ## Validator Testing
 
@@ -128,7 +146,9 @@ d3716040-0e89-4a99-a8ad-a129b079c691">
 #### Accessibility
 #### Unfixed bugs
 #### Technologies used
-
+- https://www.gitpod.io/
+- https://code.visualstudio.com
+- Google spreadsheet was used to calculate and display the highest score to the terminal after they have finished answering all questions.
 
 ## Deployment
 - This project has been deployed to https://www.heroku.com because heroku is better with backend languages.
@@ -149,5 +169,7 @@ d3716040-0e89-4a99-a8ad-a129b079c691">
 - Click 'CONNECT' to link up Heroku app to github repository code.
 - Then scroll down and choose how you want to deploy, whether 'MANUALLY' by clicking the 'DEPLOY BRANCH' option or 'AUTOMATICALLY' by clicking the 'ENABLE AUTOMATIC DEPLOYS'. 
 - After app has been succesfully deployed, a message comes up and there is a button called 'VIEW' which takes you to the terminal to run your code.
+
 ## Credits
+- The https://www.rich.readthedocs.io app was used to add the color and emojis to the terminal.
 
