@@ -77,7 +77,7 @@ Happy coding!
 - The quiz questions and options have been put together using a LIST and a for loop was used to iterate over the list which contains the questions, options, corrects answers, incorrect answers and comments.
 
 ## Testing
-- I have added some 
+- I have added the input function and I have put measures in place to make sure the right details are inputed.
 
 ## Manual testing
 #### Input Validation
@@ -124,15 +124,21 @@ d3716040-0e89-4a99-a8ad-a129b079c691">
 ###### Answer input
 - If the correct option is chosen from A-D, this is printed on the terminal.
 
+<img width="750" alt="Screenshot 2024-05-30 at 00 11 44" src="https://github.com/Oluwapelumi99/BMW_Trivia/assets/156908824/7df2996a-cb10-4ba5-bbcd-4acd39395d97">
+
 - if the incorrect option is chosen then this is printed to the terminal.
 
-- However, if something else is printed to the terminal asides the correct and incorrect answer such as space, null, special characters, this is the ouput.
+<img width="756" alt="Screenshot 2024-05-30 at 00 12 38" src="https://github.com/Oluwapelumi99/BMW_Trivia/assets/156908824/5d3fd2f2-3935-4fc1-badb-91945bfdcf75">
 
-
+- However, if something else is printed to the terminal asides the correct and incorrect answer such as space, null, special characters,etc this is the ouput.
+<img width="751" alt="Screenshot 2024-05-30 at 00 13 32" src="https://github.com/Oluwapelumi99/BMW_Trivia/assets/156908824/48dbc7c7-6dc7-4b73-90f0-29f344043b7b">
 
 
 ###### Try again input
+- I have added the function make user decide if they want to play again, and the inputs are yes or no anything else will print incorrect inpput and will ask them to try again. The prompt keeps asking until they input the accepted detals.
+-  
 - If yes is printed into the terminal to try the quiz agin, the quiz starts again.
+
 
 - If no is printed into the terminal, the quiz ends and 'Sad to see you go' is printed to the terminal.
 
@@ -141,14 +147,23 @@ d3716040-0e89-4a99-a8ad-a129b079c691">
 
 
 ## Validator Testing
-
 #### Python
+- I tested the python code with https://pep8ci.herokuapp.com/, which had the errors below.
+
+<img width="1587" alt="Screenshot 2024-05-29 at 21 43 27" src="https://github.com/Oluwapelumi99/BMW_Trivia/assets/156908824/0eeaa24c-f87d-4e30-9653-73d3e19145a7">
+
+- Errors have been fixed, here is a screenshot.
+
+
 #### Accessibility
+- The output has been made accessible by picking colors that provide a good contrast against the terminal using https://www.rich.readthedocs.io 
 #### Unfixed bugs
+
 #### Technologies used
 - https://www.gitpod.io/
 - https://code.visualstudio.com
 - Google spreadsheet was used to calculate and display the highest score to the terminal after they have finished answering all questions.
+- https://pep8ci.herokuapp.com/
 
 ## Deployment
 - This project has been deployed to https://www.heroku.com because heroku is better with backend languages.
