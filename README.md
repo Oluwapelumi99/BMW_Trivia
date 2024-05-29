@@ -138,11 +138,15 @@ d3716040-0e89-4a99-a8ad-a129b079c691">
 - I have added the function make user decide if they want to play again, and the inputs are yes or no anything else will print incorrect inpput and will ask them to try again. The prompt keeps asking until they input the accepted detals.
 -  
 - If yes is printed into the terminal to try the quiz agin, the quiz starts again.
-
+<img width="783" alt="Screenshot 2024-05-30 at 00 23 41" src="https://github.com/Oluwapelumi99/BMW_Trivia/assets/156908824/bf8209fd-79d9-48ae-ae7c-bcbf02478e80">
 
 - If no is printed into the terminal, the quiz ends and 'Sad to see you go' is printed to the terminal.
+<img width="750" alt="Screenshot 2024-05-30 at 00 40 00" src="https://github.com/Oluwapelumi99/BMW_Trivia/assets/156908824/b34d67d2-2139-4f8f-b550-bb3a51efb6c3">
 
 - However, if anything else asides yes or no is printed to the terminal, the input is not accepted and user is asked to input a valid response.
+<img width="775" alt="Screenshot 2024-05-30 at 00 33 18" src="https://github.com/Oluwapelumi99/BMW_Trivia/assets/156908824/902c5c2c-2af7-4e73-866e-00e8ebcdbfc2">
+
+
 
 
 

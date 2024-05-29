@@ -462,7 +462,7 @@ quiz_questions = [
       'incorrect_answer': ['A', 'B', 'D'],
       'comment': 'The BMW 501 served an important function: it helped'
       ' re-establish the automaker\'s reputation for creating'
-      ' high-quality, performance-orineted carrs\n',
+      ' high-quality, performance-orineted cars\n',
     },
     {
       'question': '20. Which BMW was almost a Lamborghini?'
