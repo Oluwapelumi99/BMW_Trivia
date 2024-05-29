@@ -64,7 +64,7 @@ Happy coding!
 ## Deployment
 
 ## Credits
-- 
+
 
 
 ## Colour Scheme
@@ -171,5 +171,7 @@ d3716040-0e89-4a99-a8ad-a129b079c691">
 - After app has been succesfully deployed, a message comes up and there is a button called 'VIEW' which takes you to the terminal to run your code.
 
 ## Credits
+#### Emojis and colors
 - The https://www.rich.readthedocs.io app was used to add the color and emojis to the terminal.
+- The template to run this code was created by code Institute.
 

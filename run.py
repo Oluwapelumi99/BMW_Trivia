@@ -1,10 +1,69 @@
-# # Your code goes here.
-# # You can delete these comments, but do not change the name of this file
-# # Write your code to expect a terminal of 80 characters wide and 24 rows high
-import random
-# from rich import print
-# import gspread
+# Your code goes here.
+# You can delete these comments, but do not change the name of this file
+# Write your code to expect a terminal of 80 characters wide and 24 rows high
+from PIL import Image
+import math
+from rich import print
+import gspread
 # import os
+
+def get_ascii(inputInt):
+    return charArray[math.floor(inputInt*interval)]
+chars = '*@~o- '[::-1]
+charArray = list(chars)
+charLength = len(charArray)
+interval = charLength/256
+
+ScaleFactor = 0.2
+
+oneCharWidth = 8
+oneCharHeight = 18
+text_file = open('ouput.txt', 'w')
+
+
+im = Image.open('Bmv.JPG')
+
+width, height = im.size
+print(width, height, height/width)
+im = im.resize((int(ScaleFactor*width), int(ScaleFactor*height*(oneCharWidth/oneCharHeight))), Image.NEAREST)
+width, height = im.size
+pix = im.load()
+
+for i in range(height):
+    for j in range(width):
+        r, g, b = pix[j, i]
+        h = int(r/3 + g/3 +b/3)
+        pix[j, i] = (h, h, h)
+        text_file.write(get_ascii(h))
+
+    text_file.write('\n')
+im.save('ouput.png') 
+print("""
+@--  -  -  oo-oo~~o~~~~~~oo~oo~~~o--------       - ---       - --- -      -  - -------o~~oo-----oooo-ooooo--oo-oo------   
+@--------oooo-oo~~o~@~~~~o------ ---- - -  -    - - -@@@@-oo~@@**@@@@@@@@@@@@@@**@****@~~~~----ooooo-ooooo---oo-oo-o----- 
+@---------oo-o-o~~o@@~~~~o~~oo~o~ooo-  o-    ---@~oooooo-o~o~~~ooo-oo-----------@@*-**@o~o@~@@o~oooooo~ooooo----oooo------
+---oo-o----ooo--ooooooooo~ooooo---o----------o ooo-------  oooooo------       -@~~     -o -~~o-o-oo-o--o-o---------oooo---
+~~-o--ooooooo-@@@@@@@@~~@@~~-~~@~@@@@@@@@@~ o-   --  - -   -oooo----         -~@*     - -    -o--o~ ~--o---------o--o-----
+--------------@@@@@@@@@~@~~@o@@~----------oooo---------     oo---            ~@~o- ****o o-      - o-~-oo~--ooo-----------
+- -  ------ooo@@@@@@@@@@@@@-o~~@   @*~ ~oooo~~------        -----  --       -@~o -@***@@@o          --@o--o--o-o- --------
+--~------ooooo@@@@@@@@@@@@@oo~~~~~~~~~~~~~~~~~~oo~~@@@*@@@@@@~~~~~@@@@@@~~oo~@o  o~*~~@@~~~~@@@@*******@oo----------------
+~~-o----oo----~@@@@~~~~~~@@~~~~~~~~~~~~~~~~~~~~~~@@@@~~~~~~~@@@o --~@@*@*@@@*@~oo-@@******@*****@@@~~~~oo@~------o-o------
+~~~@~~@@@@@@@@@@@@~oooooo----oooooo-~@******~~~~~~~~ o@@@*********~@@@@@@**@~ooooooooo-o------------ @--oooo -------------
+---ooooo--------o*~-- --       oo        - o -oo---  -o@-- -o~@@@@@@@---o--oo--ooo---ooo--------------o-----ooooo----     
+               o--oo- ~        oo          ~ --oo@~@~~@@~~@@@@@@@@@--- --  - ---oo---oooo-oo-oo--oo----- - o-          -  
+       --------------@~        oo          o ~-o-------------~@@~~--~        ---ooo--------------------     -             
+              -----ooo*@      -oo*-    --~**ooooooooooooo---   oo--~------o   ---oo------------------  o--  --            
+--o---------o- o-------------o-----------------oooooooooo---   -o--- ----o  - -o---o-ooooooo-o------- oo -   -            
+---------------o--     --o~~~*-**@*~~~-- -        -oooooo---    o-o        o - ------------------------ --- -o            
+--------------o-  --                           -        oo--    -- - -  o - - ------------------------ -  - - -           
+--------------o~~~o                             ~~~~-o@******o  --~-  -- -  -  ------- --o~~@~o- ---  - -  -oooooooooooooo
+------------o- o-- --------ooo~~~~@@@ooo@@@@@@o-o -  - -          -o o- -   -  --o~~~----------oo-    --o  -~~~~~~~~~~~~~~
+~~~~~~~~~@@@@****o      -           @oo-        -                -- --- --   - @@@@@@@@~~~@@@@@@@o     -  -~@@~~@@@@~~~~~~
+@@@@@~@@@@@*****@@@                ~~@@~~~~@*@@~~~~~~~~~~~~~      ---~- - o-- ~o~ooooooooooooooooo-      --ooooooooooooooo
+~~~~~@~~~~@@~~~~~~~~~            ~ooooooo----------                 -o - o-               --------o-ooo-oooooooooooooooooo
+ooooooooooooo-oo------                                                      ----o-ooo--ooooooooooooooooooooooooooooooooooo
+""")
+       
 # from google.oauth2.service_account import Credentials
 # SCOPE = [
 #     "https://www.googleapis.com/auth/spreadsheets",
@@ -15,13 +74,13 @@ import random
 # SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 # GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 # SHEET = GSPREAD_CLIENT.open('Bmw-trivia')
+
 # print('[bold blue] Brace yourself for some BMW history:thumbsup: !'
 # '\n'
 # '\n Read instructions carefully.\n'
 # '\n'
 # ' There are 20 questions in this Quiz.\n'
 # '\n Pick your answer by inputing an option between A-D.\n Goodluck! \n')
-
 # def start_trivia(score):
 #     start_trivia = True
 #     while start_trivia:
@@ -29,14 +88,14 @@ import random
 #         if continue_trivia.lower() == 'yes':
 #             break  
 #         elif continue_trivia.lower() == 'no':
-#             print('[bold blue] Sad to see you go this time')
+#             print('[bold blue] Sad to see you go')
 #             quit()                  
 #         else:
 #             print('[bold blue] Wrong input. Please input yes or no')
-
 #     game_loop(score)
-
-    
+#     username = get_username()
+#     print_name(username)
+           
 # def get_username():   
 #     """
 #      Get names inputs from the user
@@ -71,16 +130,7 @@ import random
 #         print('[bold blue]Name should not contain any special characters\n')
 #         return False
 #     return True
-
-
   
-# # import ascii_magic
-# # output = ascii_magic.from_images_file('IMG_9484.JPG',columns=200,char='#') 
-# # ascii_magic.to_terminal(output)
-
-
-
-
 # quiz_questions = [
 #     {
 #         'question': '1. What does BMW stand for?'
@@ -90,8 +140,7 @@ import random
 #             'A. Bayerische Motoren Werke',
 #             'B. Brunswick Motoren Werke', 
 #             'C. Borgholzzhausen Motoren Werke',
-#             'D. Berlin Motorenn Werke'
-#             '\n',
+#             'D. Berlin Motorenn Werke\n',
 #         ],
 #         'correct_answer':'A',
 #         'incorrect_answer':
@@ -127,8 +176,7 @@ import random
 #            'A. The Ultimate Driving Power',
 #            'B. Sheer Driving Pleasure',
 #            'C. Enjoy the Ride',
-#            'D. Joy of discovery'
-#            '\n', 
+#            'D. Joy of discovery\n', 
 #         ],
 #         'correct_answer': 'B',
 #         'incorrect_answer': ['A', 'C', 'D'],
@@ -144,8 +192,7 @@ import random
 #           'A. A line of electric cars',          
 #           'B. An SUV for off-roading',
 #           'C. A line of performance cars',
-#           'D. A line of luxury sedan'
-#           '\n', 
+#           'D. A line of luxury sedan\n', 
 #         ],
 #         'correct_answer': 'C',
 #         'incorrect_answer': ['A', 'B', 'D'],
@@ -161,8 +208,7 @@ import random
 #           'A. 3 Series',
 #           'B. 5 Series',
 #           'C. 7 Series',
-#           'D. Dixi'
-#           '\n',
+#           'D. Dixi\n',
 #       ],
 #       'correct_answer': 'D',
 #       'incorrect_answer': ['A', 'B', 'C'],
@@ -179,8 +225,7 @@ import random
 #          'A. 1969',
 #          'B. 1961',
 #          'C. 1975',
-#          'D. 1984'
-#          '\n',
+#          'D. 1984\n',
 #      ],
 #      'correct_answer': 'C',
 #      'incorrect_answer': ['A', 'B', 'D'],
@@ -195,8 +240,7 @@ import random
 #         'A. 79 miles',
 #         'B. 59 miles', 
 #         'C. 19 miles',
-#         'D. 39 miles'
-#         '\n', 
+#         'D. 39 miles\n', 
 #      ],
 #      'correct_answer': 'C',
 #      'incorrect_answer': ['A', 'B', 'D'],
@@ -211,8 +255,7 @@ import random
 #         'A. BMW Motorsport',
 #         'B. BMW Sauber F1 Team ',
 #         'C. BMW M Racing',
-#         'D. BMW Racing Team'
-#         '\n',  
+#         'D. BMW Racing Team\n',  
 #       ],
 #       'correct_answer': 'B',
 #       'incorrect_answer': ['A', 'C', 'D'],
@@ -227,8 +270,7 @@ import random
 #           'A. Radiator',
 #           'B. catalytic converter', 
 #           'C. A Piston',
-#           'D. A Four-Cylinder Engine',
-#        '\n',   
+#           'D. A Four-Cylinder Engine\n',   
 #       ],
 #       'correct_answer': 'D',
 #       'incorrect_answer': ['A', 'B', 'C'],
@@ -243,8 +285,7 @@ import random
 #           'A. Aircraft Engine',
 #           'B. Spark plug',
 #           'C. A Tractor',
-#           'D. Motorcycle'
-#           '\n',
+#           'D. Motorcycle\n',
 #       ],
 #       'correct_answer': 'A',
 #       'incorrect_answer': ['B', 'C', 'D'],
@@ -259,7 +300,7 @@ import random
 #         'A. Heart grille',
 #         'B. Kidney grille',
 #         'C. Pharynx grille',
-#         'D. Liver grille'
+#         'D. Liver grille\n',
 #      ],
 #      'correct_answer': 'B',
 #      'incorrect_answer': ['A', 'C', 'D'],
@@ -274,8 +315,7 @@ import random
 #           'A. Alpine Rally',
 #           'B. Österreichise Alpenfahrt',
 #           'C. Mille Miglia',
-#           'D. Eifelrennen'
-#           '\n',
+#           'D. Eifelrennen\n',
 #       ],
 #       'correct_answer': 'D',
 #       'incorrect_answer': ['A', 'B', 'C'],
@@ -292,8 +332,7 @@ import random
 #           'A. M1',
 #           'B. E12',
 #           'C. I8',
-#           'D. Z1'
-#        '\n',   
+#           'D. Z1\n',   
 #       ],
 #       'correct_answer': 'D',
 #       'incorrect_answer': ['A', 'B', 'C'],
@@ -309,8 +348,7 @@ import random
 #           'A. X7',
 #           'B. M12',
 #           'C. Z4',
-#           'D. E90'
-#        '\n',   
+#           'D. E90\n',   
 #       ],
 #       'correct_answer': 'A',
 #       'incorrect_answer': ['B', 'C', 'D'],
@@ -325,8 +363,7 @@ import random
 #           'A. HEINKEL KABINE',
 #           'B. ATTICA',
 #           'C. PULI',
-#           'D. ISETTA'
-#        '\n',   
+#           'D. ISETTA\n',   
 #       ],
 #       'correct_answer': 'D',
 #       'incorrect_answer': ['A', 'B', 'C'],
@@ -341,8 +378,7 @@ import random
 #           'A. 1926',
 #           'B. 1896',
 #           'C. 1906',
-#           'D. 1916'
-#        '\n',   
+#           'D. 1916\n',   
 #       ],
 #       'correct_answer': 'D',
 #       'incorrect_answer': ['A', 'B', 'C'],
@@ -356,8 +392,7 @@ import random
 #           'A. K100',
 #           'B. K1',
 #           'C. R32',
-#           'D. R12'
-#        '\n',   
+#           'D. R12\n',   
 #       ],
 #       'correct_answer': 'C',
 #       'incorrect_answer': ['A', 'B', 'D'],
@@ -372,8 +407,7 @@ import random
 #           'A. V6 Engine',
 #           'B. V8 Engine',
 #           'C. V4 Engine',
-#           'D. V12 Engine'
-#        '\n',   
+#           'D. V12 Engine\n',   
 #       ],
 #       'correct_answer': 'A',
 #       'incorrect_answer': ['B', 'C', 'D'],
@@ -387,8 +421,7 @@ import random
 #           'A. BMW Z1',
 #           'B. BMW 326',
 #           'C. BMW 501',
-#           'D. BMW 700'
-#        '\n',   
+#           'D. BMW 700\n',   
 #       ],
 #       'correct_answer': 'C',
 #       'incorrect_answer': ['A', 'B', 'D'],
@@ -402,8 +435,7 @@ import random
 #           'A. E12',
 #           'B. M1',
 #           'C. Z1',
-#           'D. I8'
-#        '\n',   
+#           'D. I8\n',   
 #       ],
 #       'correct_answer': 'B',
 #       'incorrect_answer': ['A', 'C', 'D'],
@@ -413,10 +445,11 @@ import random
          
 # ]
 
+
 # def game_loop(score):
 #     print('---------------------------')
 #     for quiz_question in quiz_questions:
-#         print(quiz_questions['question'])
+#         print(quiz_question['question'])
 #         for answer in quiz_question['choices']:
 #             print(answer)
 #         user_answer = True
@@ -433,24 +466,22 @@ import random
 #                 print('[bold blue]Incorrect Input. Please pick an option from A-D.')
 #                 user_answer = True
 
-# def get_result(username, user_score):
+# def get_result(username, score):
 #     """
 #      Get users score and increment it by 1 with each correct answer and provide the total score after 
 #      the player has completed the quiz.
 #     """
-#     print(f'[bold blue]Hi {username} you got {user_score} out of 20 questions right! ')
-#     print(f'[bold blue]You got {user_score /20 *100}%')
+#     print(f'[bold blue]Hi {username} you got {score} out of 20 questions right! ')
+#     print(f'[bold blue]You got {score /20 *100}%')
 
-# # def update_leaderboard(username, score):
-# #     """
-# #     Update Scoreboard worksheet to check for highest score
-# #     """
-# #     print('Updating score board')
-# #     scoreboard = SHEET.worksheet('scoreboard')
-# #     scoreboard.append_row(username, score)
-# #     print('none')
-# #     score = 0
-# #     username = get_username()
+# def update_leaderboard(username, score):
+#     """
+#     Update Scoreboard worksheet to check for highest score
+#     """
+#     print('Updating score board')
+#     scoreboard = SHEET.worksheet('scoreboard')
+#     scoreboard.append_row([username, score])
+#     print('none')
     
     
 # def play_again(score):
@@ -470,17 +501,11 @@ import random
 
 # def start():
 #     score = 0
-#     username = get_username()
-#     print_name(username)                   
-#     print('[bold blue] Brace yourself for some BMW history:thumbsup: !'
-#     '\n'
-#     '\n Read instructions carefully.\n'
-#     '\n'
-#     ' There are 20 questions in this Quiz.\n'
-#     '\n Pick your answer by inputing an option between A-D.\n Goodluck! \n')
 #     start_trivia(score)
+#     username = get_username()
+#     print_name(username)
 #     get_result(username, score)
-#     # update_leaderboard(username, score)
+#     update_leaderboard(username, score)
 #     # display_leaderboard()
 #     play_again(score)
     
@@ -493,6 +518,3 @@ import random
 
 # start()
 
-list = ['man', 'woman', 'cat', 'dog', 'goat', 'cow']
-random_list = random.sample(list, 5)
-print(random_list)
