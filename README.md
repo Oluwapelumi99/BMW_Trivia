@@ -174,4 +174,5 @@ d3716040-0e89-4a99-a8ad-a129b079c691">
 #### Emojis and colors
 - The https://www.rich.readthedocs.io app was used to add the color and emojis to the terminal.
 - The template to run this code was created by code Institute.
+- Code for acsii gotten from https://youtu.be/2fZBLPk-T2Y?feature=shared.
 
