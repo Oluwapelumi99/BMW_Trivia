@@ -444,7 +444,6 @@ quiz_questions = [
          
 ]
 
-
 def game_loop(score):
     print('---------------------------')
     for quiz_question in quiz_questions:
@@ -489,14 +488,14 @@ def display_leaderboard():
     scoreboard = SHEET.worksheet('scoreboard')
     data = scoreboard.get_all_values()
     print(scoreboard)
-    data.sort(key=lambda x: x[score], reverse=True)
-    data = data[:5]
-    leaderboard = []
-    for i, row in enumerate(data):
-        Position = 2
-        row[Position] = i + 1
-        leaderboard.append(row)
-    print(leaderboard)        
+    # data.sort(key=lambda x: x[score], reverse=True)
+    # data = data[:5]
+    # leaderboard = []
+    # for i, row in enumerate(data):
+    #     Position = 2
+    #     row[Position] = i + 1
+    #     leaderboard.append(row)
+    #     print(leaderboard)        
     
 display_leaderboard()      
 
