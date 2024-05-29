@@ -15,7 +15,7 @@ SCOPE = [
 CREDS = Credentials.from_service_account_file('creds.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
-SHEET = GSPREAD_CLIENT.open('Bmw-trivia')
+SHEET = GSPREAD_CLIENT.open('bmw-trivia')
 
 def get_ascii(inputInt):
     return charArray[math.floor(inputInt*interval)]
@@ -476,10 +476,10 @@ def update_leaderboard(username, score):
     """
     Update Scoreboard worksheet to check for highest score
     """
-    print('Updating score board')
+    print('[bold blue]Updating score board....')
     scoreboard = SHEET.worksheet('scoreboard')
     scoreboard.append_row([username, score])
-    print('none')
+    print('[bold blue] Scoreboard updated successfully')
 
 def display_leaderboard():
     """
@@ -488,8 +488,8 @@ def display_leaderboard():
     scoreboard = SHEET.worksheet('scoreboard')
     data = scoreboard.get_all_values()
     print(scoreboard)
-    # data.sort(key=lambda x: x[score], reverse=True)
-    # data = data[:5]
+    data.sort(key=lambda x: x[score], reverse=True)
+    data = data[:5]
     # leaderboard = []
     # for i, row in enumerate(data):
     #     Position = 2
