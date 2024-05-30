@@ -529,24 +529,24 @@ def update_leaderboard(username, score):
     print('[bold blue] Scoreboard updated successfully')
 
 
-# def display_leaderboard():
-#     """
-#     Get 5 highest scores and display to the terminal
-#     """
-#     scoreboard = SHEET.worksheet('scoreboard')
-#     data = scoreboard.get_all_values()
-#     print(scoreboard)
-#     data.sort(key=lambda x: x[score], reverse=True)
-#     data = data[:5]
-#     # leaderboard = []
-#     # for i, row in enumerate(data):
-#     #     Position = 2
-#     #     row[Position] = i + 1
-#     #     leaderboard.append(row)
-#     #     print(leaderboard)
+def display_leaderboard():
+    """
+    Get 5 highest scores and display to the terminal
+    """
+    scoreboard = SHEET.worksheet('scoreboard')
+    data = scoreboard.get_all_values()
+    print(scoreboard)
+    data.sort(key=lambda x: x[score], reverse=True)
+    data = data[:5]
+    leaderboard = []
+    for i, row in enumerate(data):
+        Position = 2
+        row[Position] = i + 1
+        leaderboard.append(row)
+        print(leaderboard)
 
 
-# display_leaderboard()
+display_leaderboard()
 
 
 def play_again(score):
