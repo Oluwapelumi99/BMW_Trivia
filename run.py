@@ -1,11 +1,5 @@
-# Your code goes here.
-# You can delete these comments, but do not change the name of this file
-# Write your code to expect a terminal of 80 characters wide and 24 rows high
-from PIL import Image
-import math
 from rich import print
 import gspread
-# import os
 from google.oauth2.service_account import Credentials
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -17,88 +11,55 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('bmw-trivia')
 
-
-def get_ascii(inputInt):
-    return charArray[math.floor(inputInt*interval)]
-
-
-chars = '*@~o- '[::-1]
-charArray = list(chars)
-charLength = len(charArray)
-interval = charLength/256
-
-ScaleFactor = 0.3
-
-oneCharWidth = 10
-oneCharHeight = 20
-text_file = open('ouput.txt', 'w')
-
-
-im = Image.open('BMW_LOGO.JPG')
-
-width, height = im.size
-print(width, height, height/width)
-im = im.resize((int(ScaleFactor*width),
-                int(ScaleFactor*height*(oneCharWidth/oneCharHeight))),
-               Image.NEAREST)
-width, height = im.size
-pix = im.load()
-
-for i in range(height):
-    for j in range(width):
-        r, g, b = pix[j, i]
-        h = int(r/3 + g/3 + b/3)
-        pix[j, i] = (h, h, h)
-        text_file.write(get_ascii(h))
-
-    text_file.write('\n')
-im.save('ouput.png')
-
-
-print('[bold blue] Brace yourself for some BMW history:thumbsup: !\n'
+def get_welcome_message():
+    print('[bold blue] Brace yourself for some BMW history:thumbsup: !\n'
       '\nRead instructions carefully.\n'
       '\n'
       ' There are 20 questions in this Quiz.\n'
       '\n Pick your answer by inputing an option between A-D.\n Goodluck! \n')
 
-print("""
-                            n--- - -@@@@-oo~@@**@@@@@@@@@@@@@@**@****@
-                      o-    ---@~oooooo-o~o~~~ooo-oo-----------@@*-**@@
-                    -------o                                -@~~     -~~o
-                  @@@@@@~ o-                               -~@*         -o
-                    oo---                                - o-~-          -
-      @@@@-o~~@   @*~ ~oooo~~------        -----  --       -@~o -          --@o
-    @@@@@oo~~~~~~~~~~~~~~~~~~oo~~@@@*@@@@@@~~~~~@@@@@@~~oo~@o  o~@@@@*******@oo
-   ~~~~@@~~~~~~~~~~~~~~~~~~~~~~@@@@~~~~~~~@@@o --~@@*@*@@@*@~oo@*****@@@~~~~oo@
-  o@******~~~~~~~~ o@@@*********~@@@@@@**@~ooooooooo-o------------ @-----------
-o*~ --       oo        - o -oo---  -o@-- -o~@@@@@@@---o--oo--ooo----------o----     
---o ~        oo          ~ --oo@~@~~@@~~@@@@@@@@@--- --  - ---oo---oo----- - o-
-----@~        oo          o ~-o-------------~@@~~--~        ---o---------     -             
----o*@      -oo*-    --~**ooooooooooooo---   oo--~------o   ----------  o--  --            
------------o-----------------oooooooooo---   -o--- ----o  - -oo------- oo -   -            
---   --o~~~*-**@*~~~-- -        -oooooo---    o-o        o - ----------- --- -o            
-  -                         -        oo--    -- - -  o - - ----------- -  - - -          
-~~o                           ~~~~-o@******o  --~-  -- -  -  ---- ---  - -  -oo
--- ------ooo~~~~@@@ooo@@@@@@o-o -  - -          -o o- -   -  --o-o-    --o  -~~
-*o -           @oo-        -                -- --- --   - @@@@@@@@@@o     -  -~
-@@@              ~~@@~~~~@*@@~~~~~~~~~~~~~      ---~- - o-- ~o~oooooo-      --o
-~~~~~          ~ooooooo----------                 -o - o-  --------o-ooo-oooo
+
+def get_ascii():
+    print("""
+                           *+*********++                           
+                       +**+*   ** +*   *+**+                       
+                     **+       **++*       +**                     
+                   ***+*+      * + **     *+ +**                   
+                 +*++*+*+*+  ####***+*  **+** ++*+                 
+                +*+ +*+**+########     +*  ***+ +*+                
+                *+    ++##########       ++      +*                
+               *+      *##########        ++      +*               
+               *+     *###########         ++     +*               
+              +*      ############          *      *+              
+              +*      *          ############      *+              
+               *+     ++         ###########*     +*               
+               **      +         ##########*      +*               
+               +*+      ++       ##########      +*+               
+                +*+       *+     ########       **+                
+                 **+        +*+*+*#####        +*+                 
+                   ***                        **                   
+                     **+                   +***                    
+                       +**+*           *+**+                       
+                          ++**********+++                          
 """'\n')
-score = 0
 
 
 def start_trivia(score):
+    username = ''
     start_trivia = True
     while start_trivia:
         continue_trivia = input("Do you want to start quiz? yes/no \n  ")
         if continue_trivia.lower() == 'yes':
+            username = get_username()
             break
         elif continue_trivia.lower() == 'no':
             print('[bold blue] Sad to see you go')
             quit()
         else:
             print('[bold blue] Wrong input. Please input yes or no')
-    game_loop(score)
+    score = game_loop(score)
+    print('return to start trivia ', score)
+    return username, score
 
 
 def get_username():
@@ -111,17 +72,11 @@ def get_username():
               ' any special characters or spaces\n')
         print('[bold blue]For example: '' [bold white]Christopher \n')
         name = input('Enter your name to start the quiz: \n').strip()
+        print(f'[bold blue] Hello {name}!. Let\'s play!!')
+        
         if valid_name(name):
             break
     return name
-
-
-def print_name(value_name):
-    """
-    Get username to print welcome message with user name in the termianl
-    """
-    print(f'[bold blue]Hello {value_name}.'
-          ' WELCOME TO MY BMW TRIVIA!!! :smile:\n')
 
 
 def valid_name(name):
@@ -496,6 +451,7 @@ def game_loop(score):
                       ' is the correct answer :smile: \n' +
                       (quiz_question['comment']))
                 score += 1
+                print(f'game loop {score}`')
                 break
             elif user_answer in quiz_question['incorrect_answer']:
                 print('[bold blue]Sorry ' + (quiz_question['correct_answer']) +
@@ -506,6 +462,8 @@ def game_loop(score):
                 print('[bold blue]Incorrect Input.'
                       'Please pick an option from A-D.')
                 user_answer = True
+
+    return score
 
 
 def get_result(username, score):
@@ -526,6 +484,7 @@ def update_leaderboard(username, score):
     print('[bold blue]Updating score board....')
     scoreboard = SHEET.worksheet('scoreboard')
     scoreboard.append_row([username, score])
+    scoreboard.sort((2, 'des'))
     print('[bold blue] Scoreboard updated successfully')
 
 
@@ -534,27 +493,17 @@ def display_leaderboard():
     Get 5 highest scores and display to the terminal
     """
     scoreboard = SHEET.worksheet('scoreboard')
-    data = scoreboard.get_all_values()
-    print(scoreboard)
-    data.sort(key=lambda x: x[score], reverse=True)
-    data = data[:5]
-    leaderboard = []
-    for i, row in enumerate(data):
-        Position = 2
-        row[Position] = i + 1
-        leaderboard.append(row)
-        print(leaderboard)
+    data = scoreboard.get_values('A2:B6')
+    print('leaderboard top 5')
+    for index, entry in enumerate(data):
+        print(f'{index + 1}: {entry[0]}  {entry[1]}pts')
 
 
-display_leaderboard()
-
-
-def play_again(score):
+def play_again():
     try_again = True
     while try_again:
         try_again = input('Would you like to try quiz again? yes/no\n ')
         if try_again.lower() == 'yes':
-            start_trivia(score)
             break
         elif try_again == 'no':
             print(f'[bold blue]You have chosen to end the game. \nBye :smile:')
@@ -562,19 +511,17 @@ def play_again(score):
         else:
             print('[bold blue] Wrong input. Please input yes or no')
             try_again = True
-        start_trivia(score)
-        username = get_username()
-        print_name(username)
-
+    start()
 
 def start():
     score = 0
-    start_trivia(score)
-    username = get_username()
-    print_name(username)
+    get_welcome_message()
+    get_ascii()
+    username, score = start_trivia(score)
     get_result(username, score)
     update_leaderboard(username, score)
-    play_again(score)
+    display_leaderboard()
+    play_again()
 
 
 start()
