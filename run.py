@@ -1,4 +1,3 @@
-from tabulate import tabulate
 from rich import print
 import gspread
 from google.oauth2.service_account import Credentials
