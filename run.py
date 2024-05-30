@@ -1,3 +1,4 @@
+from tabulate import tabulate
 from rich import print
 import gspread
 from google.oauth2.service_account import Credentials
@@ -58,7 +59,6 @@ def start_trivia(score):
         else:
             print('[bold blue] Wrong input. Please input yes or no')
     score = game_loop(score)
-    print('return to start trivia ', score)
     return username, score
 
 
@@ -451,7 +451,6 @@ def game_loop(score):
                       ' is the correct answer :smile: \n' +
                       (quiz_question['comment']))
                 score += 1
-                print(f'game loop {score}`')
                 break
             elif user_answer in quiz_question['incorrect_answer']:
                 print('[bold blue]Sorry ' + (quiz_question['correct_answer']) +
@@ -494,9 +493,14 @@ def display_leaderboard():
     """
     scoreboard = SHEET.worksheet('scoreboard')
     data = scoreboard.get_values('A2:B6')
-    print('leaderboard top 5')
+    print('[bold blue]Leaderboard top 5')
     for index, entry in enumerate(data):
-        print(f'{index + 1}: {entry[0]}  {entry[1]}pts')
+        print((f'{index + 1}: {entry[0]}  {entry[1]}pts'))
+
+
+def get_highest_score():
+    scoreboard = SHEET.worksheet('scoreboard')
+    print(f'[bold blue]Highest score is {scoreboard.get_values('A2')} with {scoreboard.get_values('B2')} points.')
 
 
 def play_again():
@@ -521,6 +525,7 @@ def start():
     get_result(username, score)
     update_leaderboard(username, score)
     display_leaderboard()
+    get_highest_score()
     play_again()
 
 
