@@ -498,9 +498,9 @@ def display_leaderboard():
         print((f'{index + 1}: {entry[0]}  {entry[1]}pts'))
 
 
-def get_highest_score():
-    scoreboard = SHEET.worksheet('scoreboard')
-    print(f'[bold blue]Highest score is {scoreboard.get_values('A2')} with {scoreboard.get_values('B2')} points.')
+# def get_highest_score():
+#     scoreboard = SHEET.worksheet('scoreboard')
+#     print('[bold blue]Highest score is '+  (scoreboard.get_values('A2')) + ' with' (scoreboard.get_values('B2')) + ' points.')
 
 
 def play_again():
@@ -525,7 +525,7 @@ def start():
     get_result(username, score)
     update_leaderboard(username, score)
     display_leaderboard()
-    get_highest_score()
+    # get_highest_score()
     play_again()
 
 
