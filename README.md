@@ -20,21 +20,36 @@
 - Answer Input
 - Try again Input
 
-## Bugs
-
-- Solved bugs
-
 ## Validator testing
 - Python
 - Accessibility
 - Unfixed bugs
 - Technologies used
 
+## Cloning and forking
+
+### CLONING
+- On (https://github.com), navigate to the greeen <> code button on the right side of the page.
+- copy the URL for the repository.
+- To clone the repository using HTTPS, under HTTPS copy the URL
+- To clone the repository using an SSH key, Click SSH then copy the URL.
+- To clone a repository using github cli, click github cli then copy the URL.
+- Open Terminal
+- Change the current working directory to the location where you want the cloned directory.
+- Type 'git clone', and then pate the URL you copied earlier.
+- Press enter to create a local clone.
+
+### FORKING
+- On (https://github.com), navigate to the repository.
+- In the top-right corner of the page, click Fork.
+- Under 'owner', select the dropdown menu and click an owner for forked repository.
+- By default, forks are named the same as their upstream repositories. Optionally, to further distinguish your fork, in the 'Repository name' field,type a name.
+- Optionally, in the 'Description' field, type a description of your fork.
+- Optionally, select copy the default branch only.
+- Click create fork.
 ## Deployment
 
 ## Credits
-
-
 
 ## Colour Scheme
 - Some of the color of the text that comes up on the terminal has been changed to bold blue and bold white . The bold blue texts will be noticed when an answer is chosen. The bold blue texts have been used to highlight the comments which are the full answers to the question.
@@ -165,6 +180,7 @@ d3716040-0e89-4a99-a8ad-a129b079c691">
 - https://www.gitpod.io/
 - https://code.visualstudio.com
 - Google spreadsheet was used to calculate and display the highest score to the terminal after they have finished answering all questions.
+- https://www.heroku.com
 - https://pep8ci.herokuapp.com/
 
 ## Cloning and forking.
@@ -191,8 +207,7 @@ d3716040-0e89-4a99-a8ad-a129b079c691">
 - After app has been succesfully deployed, a message comes up and there is a button called 'VIEW' which takes you to the terminal to run your code.
 
 ## Credits
-#### Emojis and colors
 - The https://www.rich.readthedocs.io app was used to add the color and emojis to the terminal.
 - The template to run this code was created by code Institute.
-- Ascii was generated from 
+- Ascii was generated from https://www.ascii-art-generator.org
 
