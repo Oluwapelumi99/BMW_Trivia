@@ -33,7 +33,8 @@ Happy coding!
 
 # BMW TRIVIA
 
-- This is a quiz about BMW.The quiz consists of 20 questions and 4 options each. It was inspired by my special interest in BMW cars. Bayerische Motoren Werke AG, commonly abbreviated to BMW, is a German multinational manufacturer of luxury vehicles and motorcycles headquartered in Munich, Bavaria, Germany.This quiz consists of some history about BMW which has been added after each question have been answered.
+- This is a quiz about BMW.The quiz consists of 20 questions and 4 options each. It was inspired by my special interest in BMW cars. Bayerische Motoren Werke AG, commonly abbreviated to BMW, is a German multinational manufacturer of luxury vehicles and motorcycles headquartered in Munich, Bavaria, Germany. This quiz consists of some history about BMW which has been added after each question is answered. The history was added to provide more knowledge to any BMW lover who choose to play the quiz as the purpose of the whole quiz is to educate BMW fans.
+- This quiz is targeted at car lovers who have special interest in BMW and want to know more of the company's history. 
 
 # Table of Contents
 - Colour Scheme
@@ -41,6 +42,7 @@ Happy coding!
 
 # Features
 - Spreadsheet
+- Acsii
 
 ## Testing
 
@@ -68,18 +70,31 @@ Happy coding!
 
 
 ## Colour Scheme
-- Some of the color of the text that comes up on the terminal has been changed to bold blue and bold white . The bold blue texts will be noticed when an aswer is chosen. The bold blue texts have been used to highlight the comments which are the full answers to the question.
-- Emojis have also been used in some cases where the user gets the answer right, a smile emoji has been used and when the wrong answer is chosen, A message saying the correct answer with a thumb_down emoji is preinted to the screen.
-- This color skim was inspired by the BMW logo which is blue and white.
--The color scheme have been added by installing 'rich' from the terminal by inputting 'pip install rich' and we are able to access rich in our run.py by using 'from rich import rich'.
+- Some of the color of the text that comes up on the terminal has been changed to bold blue and bold white . The bold blue texts will be noticed when an answer is chosen. The bold blue texts have been used to highlight the comments which are the full answers to the question.
+- Emojis have also been used in some cases where the user gets the answer right, a smile emoji has been used and when the wrong answer is chosen, A message saying the correct answer with a thumb_down emoji is printed to the screen.
+- This color scheme was inspired by the BMW logo which is blue and white.
+-The color scheme have been added by installing 'rich' from the terminal by inputting 'pip install rich' and we are able to access rich in our run.py by using 'from rich import print'.
 
 ## Data structure 
 - The quiz questions and options have been put together using a LIST and a for loop was used to iterate over the list which contains the questions, options, corrects answers, incorrect answers and comments.
 
+## Features
+
+#### Google spreadsheet
+- Google sheet has been added to this quiz to collect user name and score and sort the highest five in descending order and then finally print the leaderboard at the end of the quiz showing the Top 5.
+<img width="1710" alt="Screenshot 2024-05-31 at 21 03 45" src="https://github.com/Oluwapelumi99/BMW_Trivia/assets/156908824/474d117c-3313-49a7-bb99-5552d372cf67">
+
+
+#### Ascii
+
+- Ascii of BMW logo was generated using https://www.ascii-ar-generator.org been added to the quiz to display in the terminal after the welcome message has been printed to the screen to give a more detailed idea of what the quiz is about. 
+<img width="750" alt="Screenshot 2024-05-31 at 21 09 27" src="https://github.com/Oluwapelumi99/BMW_Trivia/assets/156908824/5f47ff10-f24b-4461-815c-1db7a9fd8b51">
+
 ## Testing
-- I have added the input function and I have put measures in place to make sure the right details are inputed.
+
 
 ## Manual testing
+- I have added the input function and I have put measures in place to make sure the right details are inputed.
 #### Input Validation
 ###### Name Input
 - I have added some input validation using the if statement and the while loop. User has been requested to input their names and their input will have to be validated.
