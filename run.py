@@ -16,11 +16,12 @@ def get_welcome_message():
     """
     Prints welcome message to the terminal when code runs.
     """
-    print('[bold blue] Brace yourself for some BMW history:thumbsup: !\n'
-      '\nRead instructions carefully.\n'
-      '\n'
-      ' There are 20 questions in this Quiz.\n'
-      '\n Pick your answer by inputing an option between A-D.\n Goodluck! \n')
+    print('\n[bold blue] Brace yourself for some BMW history:thumbsup: !\n'
+          '\n Read instructions carefully.\n'
+          '\n'
+          ' There are 20 questions in this Quiz.\n'
+          '\n Pick your answer by inputing an option between A-D.\n'
+          ' Goodluck! \n')
 
 
 def get_ascii():
@@ -39,9 +40,9 @@ def get_ascii():
                *+     *###########         ++     +*               
               +*      ############          *      *+              
               +*      *          ############      *+              
-               *+     ++         ###########*     +*               
+               *+     ++         ###########*     +*          
                **      +         ##########*      +*               
-               +*+      ++       ##########      +*+               
+               +*+      ++       ##########      +*+         
                 +*+       *+     ########       **+                
                  **+        +*+*+*#####        +*+                 
                    ***                        **                   
@@ -81,11 +82,12 @@ def get_username():
               ' any special characters or spaces\n')
         print('[bold blue]For example: '' [bold white]Christopher \n')
         name = input('Enter your name to start the quiz: \n').strip()
-        print(f'[bold blue] Hello {name}!. Let\'s play!!')
-        
+
         if valid_name(name):
+            print(f'\n [bold blue]Hello {name}!. Let\'s play!! :smile: \n')
             break
     return name
+
 
 
 def valid_name(name):
@@ -100,11 +102,9 @@ def valid_name(name):
         print('[bold blue]Name must be at least 3 characters\n')
         return False
 
-    if name.isalnum():
-        print('[bold blue]Name should not contain any numbers')
-
     if not name.isalpha():
-        print('[bold blue]Name should not contain any special characters or numbers\n')
+        print('[bold blue]Name should not contain any special characters'
+              ' or numbers\n')
         return False
     return True
 
@@ -128,7 +128,7 @@ quiz_questions = [
                 'D',
             ],
         'incorrect_input':'',
-        'comment': 'BMW stands for Bayerische Motoren Werke,'
+        'comment': '\nBMW stands for Bayerische Motoren Werke,'
         ' or translated into English,Bavarian Motor Works\n',
     },
     {
@@ -143,7 +143,7 @@ quiz_questions = [
         ],
         'correct_answer': 'D',
         'incorrect_answer': ['A', 'B', 'C'],
-        'comment': 'While many think the blue and white checkered'
+        'comment': '\nWhile many think the blue and white checkered'
         ' design is representative of a spinning aircraft propeller,'
         '\nit is in fact a combination of the Rapp Motorenwerke company'
         ' from which BMW grew, and the colors of the Bavarian flag.\n',
@@ -160,7 +160,7 @@ quiz_questions = [
         ],
         'correct_answer': 'B',
         'incorrect_answer': ['A', 'C', 'D'],
-        'comment': 'The BMW slogan “Sheer Driving Pleasure” has evolved'
+        'comment': '\nThe BMW slogan “Sheer Driving Pleasure” has evolved'
         ' over the years from various brand claims in German.'
         '\nThe term “pleasure” first appeared in the 1930s in BMW ads'
         '\n',
@@ -177,7 +177,7 @@ quiz_questions = [
         ],
         'correct_answer': 'C',
         'incorrect_answer': ['A', 'B', 'D'],
-        'comment': 'The “M” in the BMW M Series stands for'
+        'comment': '\nThe “M” in the BMW M Series stands for'
         ' “Motorsport”, and the M Series was originally created to'
         ' facilitate BMW\'s racing program.'
         '\nOver time, the BMW M program began to supplement their vehicle'
@@ -197,7 +197,7 @@ quiz_questions = [
       ],
       'correct_answer': 'D',
       'incorrect_answer': ['A', 'B', 'C'],
-      'comment': 'BMW became an automobile manufacturer in 1928 when it'
+      'comment': '\nBMW became an automobile manufacturer in 1928 when it'
       ' purchased Fahrzeugfabrik Eisenach,'
       '\nwhich built Austin Sevens at that time under licence(under the'
       ' Dixi marque). The first car'
@@ -215,7 +215,7 @@ quiz_questions = [
      ],
      'correct_answer': 'C',
      'incorrect_answer': ['A', 'B', 'D'],
-     'comment': 'The BMW 3 Series is a line of compact executive cars'
+     'comment': '\nThe BMW 3 Series is a line of compact executive cars'
      ' manufactured by the German automaker BMM'
      'since May 1975.\nIt is the successor to the 02 Series and has been'
      ' produced in seven generations.\n',
@@ -233,7 +233,7 @@ quiz_questions = [
      ],
      'correct_answer': 'C',
      'incorrect_answer': ['A', 'B', 'D'],
-     'comment': 'Conceived as a prototype in 1969, the BMW 1602e premiered at'
+     'comment': '\nConceived as a prototype in 1969, the BMW 1602e premiered at'
      ' the 1972 Olympic Games in Munich'
      '. The battery powered Beemer could accelerate\nfrom 0-31mph in'
      ' 8.0 seconds, toppped out at 62mph, and had'
@@ -250,7 +250,7 @@ quiz_questions = [
       ],
       'correct_answer': 'B',
       'incorrect_answer': ['A', 'C', 'D'],
-      'comment': 'BMW Sauber were a constructor which competed in the Formula'
+      'comment': '\nBMW Sauber were a constructor which competed in the Formula'
       ' One World Championship between'
       '2006 and 2009.\nThe team emerged as a result of the purchase of the'
       ' Sauber team by BMW in 2006.\n',
@@ -266,7 +266,7 @@ quiz_questions = [
       ],
       'correct_answer': 'D',
       'incorrect_answer': ['A', 'B', 'C'],
-      'comment': 'In 1973, the manufacturer opened its'
+      'comment': '\nIn 1973, the manufacturer opened its'
       ' distinctive \'four-cylinder\'building in Munich,'
       'Germany.\nIt is often cited as one of the most notable examples of'
       ' architecture in Munich.\n',
@@ -282,10 +282,10 @@ quiz_questions = [
       ],
       'correct_answer': 'A',
       'incorrect_answer': ['B', 'C', 'D'],
-      'comment': 'The BMW IIIa aircraft engine was known for\n'
-      ' good fuel economy and high-altitude performance'
-      '\n The resulting orders for IIIa engines from the\n'
-      ' German military caused rapid expansion for BMW.\n',
+      'comment': '\nThe BMW IIIa aircraft engine was known for\n'
+      'good fuel economy and high-altitude performance.'
+      'The resulting orders for IIIa engines from the\n'
+      'German military caused rapid expansion for BMW.\n',
     },
     {
      'question': '11. What grille design has become a defining feature'
@@ -300,7 +300,7 @@ quiz_questions = [
      ],
      'correct_answer': 'B',
      'incorrect_answer': ['A', 'C', 'D'],
-     'comment': 'The \"Kidney grille\", first used in BMW\'s'
+     'comment': '\nThe \"Kidney grille\", first used in BMW\'s'
      '1933 model 303, is named after kidneys because of its identical'
      'dual structure, rather than the single grille design that was used'
      ' by most cars at the time.\n',
@@ -316,7 +316,7 @@ quiz_questions = [
       ],
       'correct_answer': 'D',
       'incorrect_answer': ['A', 'B', 'C'],
-      'comment': 'The 328 was first introdeced at the Eifelrennen'
+      'comment': '\nThe 328 was first introdeced at the Eifelrennen'
       'race at the Nürburgring in 1936, where Ernst Henne drove\nit'
       ' to win the 2.0-litre class. The 328 had more than 100 class'
       ' wins in 1937, including thr RAC Tourist Trophy,the'
@@ -333,7 +333,7 @@ quiz_questions = [
       ],
       'correct_answer': 'D',
       'incorrect_answer': ['A', 'B', 'C'],
-      'comment': 'The BMW Z1 roadster was one of BMW Technik GmbH\'s'
+      'comment': '\nThe BMW Z1 roadster was one of BMW Technik GmbH\'s'
       ' first big projects. In addition to the unique door design,'
       '\nthe Z1 body featured several other innovations: removable plastic'
       ' body panels, a flat undertray, a roll-hope integrated\ninto the'
@@ -350,7 +350,7 @@ quiz_questions = [
       ],
       'correct_answer': 'A',
       'incorrect_answer': ['B', 'C', 'D'],
-      'comment': 'With standard seating for seven, the BMW X7 is more than'
+      'comment': '\nWith standard seating for seven, the BMW X7 is more than'
       ' just the biggest BMW ever built. It is advertised as the most'
       ' comfortable and luxurious Sports activity Vehicle in its class\n',
     },
@@ -365,7 +365,7 @@ quiz_questions = [
       ],
       'correct_answer': 'D',
       'incorrect_answer': ['A', 'B', 'C'],
-      'comment': 'In 1955, the BMW Isetta became the world\'s first'
+      'comment': '\nIn 1955, the BMW Isetta became the world\'s first'
       ' mass-production car to achieve a fuel consumption of 3L/100km\n'
       '(94mpg; 78mpg). It was the top-selling single-cylinder car in the'
       ' world,with 161,728 units sold\n',
@@ -381,7 +381,7 @@ quiz_questions = [
       ],
       'correct_answer': 'D',
       'incorrect_answer': ['A', 'B', 'C'],
-      'comment': 'BMW\'s corporate history considers the founding date'
+      'comment': '\nBMW\'s corporate history considers the founding date'
       ' of Bayerische Flugzeugwerke(7 March 1916) to be the birth of the'
       ' company.\n',
     },
@@ -396,7 +396,7 @@ quiz_questions = [
       ],
       'correct_answer': 'C',
       'incorrect_answer': ['A', 'B', 'D'],
-      'comment': 'BMW bega production of motorcycles in 1923, with the R32'
+      'comment': '\nBMW bega production of motorcycles in 1923, with the R32'
       ' model. The R32 established the boxer-twin, shaft-drive\npowertrain'
       ' layout that BMW would use for many years to come.\n',
     },
@@ -426,7 +426,7 @@ quiz_questions = [
       ],
       'correct_answer': 'C',
       'incorrect_answer': ['A', 'B', 'D'],
-      'comment': 'The BMW 501 served an important function: it helped'
+      'comment': '\nThe BMW 501 served an important function: it helped'
       ' re-establish the automaker\'s reputation for creating'
       ' high-quality, performance-orineted cars\n',
     },
@@ -441,7 +441,7 @@ quiz_questions = [
       ],
       'correct_answer': 'B',
       'incorrect_answer': ['A', 'C', 'D'],
-      'comment': 'Lambourghini was supposed to BMW in building a racing car,'
+      'comment': '\nLambourghini was supposed to BMW in building a racing car,'
       ' but the agreement dissolved in 1978 due to the italian automaker\'s'
       ' finanacial issues. BMW completed the project and the M1 became the'
       ' first mid-engine car in the line-up.\n',
@@ -486,20 +486,20 @@ def get_result(username, score):
      answer and provide the total score after
      the player has completed the quiz.
     """
-    print(f'[bold blue]Hi {username} you got {score}'
-          ' out of 20 questions right! ')
-    print(f'[bold blue]You got {score /20 *100}%')
+    print(f'\n[bold blue]Hi {username} you got {score}'
+          ' out of 20 questions right! \n')
+    print(f'\n[bold blue]You got {score /20 *100}%\n')
 
 
 def update_leaderboard(username, score):
     """
     Update Scoreboard worksheet to check for highest score
     """
-    print('[bold blue]Updating score board....')
+    print('\n[bold blue]Updating score board....\n')
     scoreboard = SHEET.worksheet('scoreboard')
     scoreboard.append_row([username, score])
     scoreboard.sort((2, 'des'))
-    print('[bold blue] Scoreboard updated successfully')
+    print('\n[bold blue]Scoreboard updated successfully\n')
 
 
 def display_leaderboard():
@@ -510,38 +510,31 @@ def display_leaderboard():
     data = scoreboard.get_values('A2:B6')
     print('[bold blue]Leaderboard top 5')
     for index, entry in enumerate(data):
-        print((f'{index + 1}: {entry[0]}  {entry[1]}pts'))
-def start_2():
-    score = 0
-    username = ''
-    get_result(username, score)
-    update_leaderboard(username, score)
-    display_leaderboard()
-    play_again()
+        print((f'\n{index + 1}: {entry[0]}  {entry[1]}pts\n'))
 
-start_2()
 
 def play_again():
     """
-    Asks user if they want to play again, gets 
+    Asks user if they want to play again, gets
     user input and validates their input.
     """
     try_again = True
     while try_again:
-        try_again = input('Would you like to try quiz again? yes/no\n ')
+        try_again = input('\nWould you like to try quiz again? yes/no\n ')
         if try_again.lower() == 'yes':
             break
         elif try_again == 'no':
-            print(f'[bold blue]You have chosen to end the game. \nBye :smile:')
+            print(f'\n[bold blue]You have chosen to end the game. \nBye :smile:\n')
             quit()
         else:
-            print('[bold blue] Wrong input. Please input yes or no')
+            print('\n[bold blue] Wrong input. Please input yes or no\n')
             try_again = True
-    start_2()
+    start()
+
 
 def start():
     """
-    Calls all functions.
+    Contains all functions.
     """
     score = 0
     get_welcome_message()
@@ -554,14 +547,3 @@ def start():
 
 
 start()
-
-
-def start_2():
-    score = 0
-    username = ''
-    get_result(username, score)
-    update_leaderboard(username, score)
-    display_leaderboard()
-    play_again()
-
-start_2()
