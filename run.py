@@ -11,7 +11,11 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('bmw-trivia')
 
+
 def get_welcome_message():
+    """
+    Prints welcome message to the terminal when code runs.
+    """
     print('[bold blue] Brace yourself for some BMW history:thumbsup: !\n'
       '\nRead instructions carefully.\n'
       '\n'
@@ -20,6 +24,9 @@ def get_welcome_message():
 
 
 def get_ascii():
+    """
+    Prints ascii after welcome message.
+    """
     print("""
                            *+*********++                           
                        +**+*   ** +*   *+**+                       
@@ -45,6 +52,9 @@ def get_ascii():
 
 
 def start_trivia(score):
+    """
+    Asks if user wants to start quiz and gets and validates user input.
+    """
     username = ''
     start_trivia = True
     while start_trivia:
@@ -63,7 +73,7 @@ def start_trivia(score):
 
 def get_username():
     """
-     Get names inputs from the user
+    Get names inputs from the user
     """
     while True:
         print('[bold blue]Name must be less than 20 characters'
@@ -79,9 +89,9 @@ def get_username():
 
 
 def valid_name(name):
-    '''
+    """
     Gets Username and validates it.
-    '''
+    """
     if len(name) > 20:
         print('[bold blue]Name should be less than 20 characters\n')
         return False
@@ -90,8 +100,11 @@ def valid_name(name):
         print('[bold blue]Name must be at least 3 characters\n')
         return False
 
+    if name.isalnum():
+        print('[bold blue]Name should not contain any numbers')
+
     if not name.isalpha():
-        print('[bold blue]Name should not contain any special characters\n')
+        print('[bold blue]Name should not contain any special characters or numbers\n')
         return False
     return True
 
@@ -437,6 +450,9 @@ quiz_questions = [
 
 
 def game_loop(score):
+    """
+    Gets quiz questions and answers and loops the game.
+    """
     print('---------------------------')
     for quiz_question in quiz_questions:
         print(quiz_question['question'])
@@ -495,14 +511,21 @@ def display_leaderboard():
     print('[bold blue]Leaderboard top 5')
     for index, entry in enumerate(data):
         print((f'{index + 1}: {entry[0]}  {entry[1]}pts'))
+def start_2():
+    score = 0
+    username = ''
+    get_result(username, score)
+    update_leaderboard(username, score)
+    display_leaderboard()
+    play_again()
 
-
-# def get_highest_score():
-#     scoreboard = SHEET.worksheet('scoreboard')
-#     print('[bold blue]Highest score is '+  (scoreboard.get_values('A2')) + ' with' (scoreboard.get_values('B2')) + ' points.')
-
+start_2()
 
 def play_again():
+    """
+    Asks user if they want to play again, gets 
+    user input and validates their input.
+    """
     try_again = True
     while try_again:
         try_again = input('Would you like to try quiz again? yes/no\n ')
@@ -514,9 +537,12 @@ def play_again():
         else:
             print('[bold blue] Wrong input. Please input yes or no')
             try_again = True
-    start()
+    start_2()
 
 def start():
+    """
+    Calls all functions.
+    """
     score = 0
     get_welcome_message()
     get_ascii()
@@ -524,8 +550,18 @@ def start():
     get_result(username, score)
     update_leaderboard(username, score)
     display_leaderboard()
-    # get_highest_score()
     play_again()
 
 
 start()
+
+
+def start_2():
+    score = 0
+    username = ''
+    get_result(username, score)
+    update_leaderboard(username, score)
+    display_leaderboard()
+    play_again()
+
+start_2()
