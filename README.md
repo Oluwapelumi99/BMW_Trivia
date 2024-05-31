@@ -28,28 +28,10 @@
 
 ## Cloning and forking
 
-### CLONING
-- On (https://github.com), navigate to the greeen <> code button on the right side of the page.
-- copy the URL for the repository.
-- To clone the repository using HTTPS, under HTTPS copy the URL
-- To clone the repository using an SSH key, Click SSH then copy the URL.
-- To clone a repository using github cli, click github cli then copy the URL.
-- Open Terminal
-- Change the current working directory to the location where you want the cloned directory.
-- Type 'git clone', and then pate the URL you copied earlier.
-- Press enter to create a local clone.
-
-### FORKING
-- On (https://github.com), navigate to the repository.
-- In the top-right corner of the page, click Fork.
-- Under 'owner', select the dropdown menu and click an owner for forked repository.
-- By default, forks are named the same as their upstream repositories. Optionally, to further distinguish your fork, in the 'Repository name' field,type a name.
-- Optionally, in the 'Description' field, type a description of your fork.
-- Optionally, select copy the default branch only.
-- Click create fork.
 ## Deployment
 
 ## Credits
+
 
 ## Colour Scheme
 - Some of the color of the text that comes up on the terminal has been changed to bold blue and bold white . The bold blue texts will be noticed when an answer is chosen. The bold blue texts have been used to highlight the comments which are the full answers to the question.
@@ -66,6 +48,11 @@
 - Google sheet has been added to this quiz to collect user name and score and sort the highest five in descending order and then finally print the leaderboard at the end of the quiz showing the Top 5.
 
 <img width="1710" alt="Screenshot 2024-05-31 at 21 03 45" src="https://github.com/Oluwapelumi99/BMW_Trivia/assets/156908824/474d117c-3313-49a7-bb99-5552d372cf67">
+
+- Leaderboard top 5 is then printed to the terminal after the game ends from the values gottten from the scoreboard spread sheet.
+
+<img width="770" alt="Screenshot 2024-06-01 at 00 34 29" src="https://github.com/Oluwapelumi99/Rock--paper-scissors/assets/156908824/02528fe8-dd29-46fe-bce1-6cf19daf7326">
+
 
 
 #### Ascii
@@ -184,7 +171,25 @@ d3716040-0e89-4a99-a8ad-a129b079c691">
 - https://pep8ci.herokuapp.com/
 
 ## Cloning and forking.
+### CLONING
+- On (https://github.com), navigate to the greeen <> code button on the right side of the page.
+- copy the URL for the repository.
+- To clone the repository using HTTPS, under HTTPS copy the URL
+- To clone the repository using an SSH key, Click SSH then copy the URL.
+- To clone a repository using github cli, click github cli then copy the URL.
+- Open Terminal
+- Change the current working directory to the location where you want the cloned directory.
+- Type 'git clone', and then pate the URL you copied earlier.
+- Press enter to create a local clone.
 
+### FORKING
+- On (https://github.com), navigate to the repository.
+- In the top-right corner of the page, click Fork.
+- Under 'owner', select the dropdown menu and click an owner for forked repository.
+- By default, forks are named the same as their upstream repositories. Optionally, to further distinguish your fork, in the 'Repository name' field,type a name.
+- Optionally, in the 'Description' field, type a description of your fork.
+- Optionally, select copy the default branch only.
+- Click create fork.
 
 ## Deployment
 - This project has been deployed to https://www.heroku.com because heroku is better with backend languages.
