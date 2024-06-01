@@ -53,8 +53,7 @@
 
 - Leaderboard top 5 is then printed to the terminal after the game ends from the values gottten from the scoreboard spread sheet.
 
-
-
+<img width="761" alt="Screenshot 2024-06-01 at 02 18 48" src="https://github.com/Oluwapelumi99/BMW_Trivia/assets/156908824/f9ad5c93-8f15-45d7-ad9e-a4bee2c10a31">
 
 
 #### Ascii
@@ -89,32 +88,29 @@
 
 - Finally, this is what happens when the user inputs the accepted details. It can be seen that the input is accepted and the code moves on to  the next code.
 
-
+<img width="752" alt="Screenshot 2024-06-01 at 02 32 06" src="https://github.com/Oluwapelumi99/BMW_Trivia/assets/156908824/ef691e67-74b1-4795-b62b-18d892bf6e44">
 
 
 ###### Start game Input
 Input validation has also been used with while loops to check if they want to start the quiz and keeps asking if a wrong input is inputed.
 - This is a screenshot of the prompt that askes users if they want to start the quiz.
 
-
+<img width="750" alt="Screenshot 2024-06-01 at 02 12 45" src="https://github.com/Oluwapelumi99/BMW_Trivia/assets/156908824/c42e7655-36c4-4073-83c4-5e8cbd4167ad">
 
 - This is what happens when yes is inputed after user has been asked if they want to start the game.
 It can be seen that the quiz starts and prints the first question of the quiz to the terminal.
 
-
+<img width="756" alt="Screenshot 2024-06-01 at 02 13 21" src="https://github.com/Oluwapelumi99/BMW_Trivia/assets/156908824/c93978a8-e72b-48f3-b889-362d189e6aa3">
 
 - A screenshot of what happens when no is inputed to the terminal. It can be seen that the quiz ends.
 
-
-
+<img width="762" alt="Screenshot 2024-06-01 at 02 14 05" src="https://github.com/Oluwapelumi99/BMW_Trivia/assets/156908824/0d539a09-9437-49dd-a674-4a8c1ce67765">
 
 - This is what happens when nothing was inputed to the terminal.
-
-
+<img width="755" alt="Screenshot 2024-06-01 at 02 15 44" src="https://github.com/Oluwapelumi99/BMW_Trivia/assets/156908824/dcbfde2b-2b81-4ed8-8436-b655e8ad1bdf">
 
 - This is what happens when anything asides yes or no is inputed onto the terminal.
-
-
+<img width="751" alt="Screenshot 2024-06-01 at 02 15 13" src="https://github.com/Oluwapelumi99/BMW_Trivia/assets/156908824/acee0500-f199-48be-988d-3e60ef6dcc4a">
 
 
 ###### Answer input
@@ -136,15 +132,16 @@ It can be seen that the quiz starts and prints the first question of the quiz to
 
 - If yes is printed into the terminal to try the quiz agin, the quiz starts again.
 
+<img width="764" alt="Screenshot 2024-06-01 at 02 20 57" src="https://github.com/Oluwapelumi99/BMW_Trivia/assets/156908824/c151b9a6-0be2-4e3e-a5f7-9681af29cbb1">
 
 
 - If no is printed into the terminal, the quiz ends and 'Sad to see you go' is printed to the terminal.
 
-
+<img width="745" alt="Screenshot 2024-06-01 at 02 22 05" src="https://github.com/Oluwapelumi99/BMW_Trivia/assets/156908824/2a9524aa-8ae2-449f-9e42-16d5ccb81cff">
 
 - However, if anything else asides yes or no is printed to the terminal, the input is not accepted and user is asked to input a valid response.
 
-
+<img width="755" alt="Screenshot 2024-06-01 at 02 20 23" src="https://github.com/Oluwapelumi99/BMW_Trivia/assets/156908824/a16109f5-25b8-4bc9-9d16-dc11c8331e9c">
 
 
 ## Validator Testing
