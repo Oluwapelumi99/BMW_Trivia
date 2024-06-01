@@ -27,50 +27,8 @@
 - Technologies used
 
 ## Cloning and forking
+
 ## Creating a google spreadsheet
-
-- Create a google account first and make sure to use a personal google account.
-- Then we will set up our API - Application programme interface. This is so that python project can access our google sheet and get data from the sheet.
-- In order to do this, go to (https://console.cloud.google.com/). Then the first thing is to create a new project and then give the project a name, then click create.
-- Then click select project on the new project that pops up on the right side of the screen.
-- From the side menu, then select API AND SERVICES and then select library.
-- In order to access the spreadsheet, we need to enable google drive api and google sheets api.
-- Search for the google drive api and google sheets api in the library then enable both.
-- When the google drive api is enabled, on the next page click on create credentials
-- Next, on credential type, click on google drive api
-- What will you be processing? , application data
-- For the "Are you planning to use this API with Compute Engine, Kubernetes Engine, App Engine, or Cloud Functions?" question, select No, I'm not using them
-- Click Next
-- On your credentials:
-- Enter a service account name, name can be the name of your project 
-- In the Role Dropdown box choose Basic > Editor then press Continue
-- On the next page, click on the Service Account that has been created
-- On the next page, click on the Keys tab
-- Click on the Add Key dropdown and select Create New Key
-- Select JSON and then click Create. This will trigger the json file with your API credentials in it to download to your machine.
-- Search for the file in your computer
-- After the google sheets api has been enabled, you do not need to create any credentials for that.
-- Copy and paste the json file you downloaded earlier to your workspace.
-- Open the json file and copy the client email without the code, go back to the spreadsheet and click the share button on the right top corner. Paste in the client's email, make sure the editor is selected and untick notify people and then click share.
-- Rename the json file to 'CREDs.JSON' and add it to .gitignore so it cannot be tracked by git and should be kept secret.
-- In order to use google sheet api, add 2 more dependencies to your project.
-1. google oauth
-2. gspread
-- install these by using the command 'pip3 install gspread google-auth' in the terminal
-- After the packages have been installed, access them by using the following commands at the top of the run.py file
-- 'import gspread'
-- 'from google.oauth2.services_account import Credentials'
-- SCOPE = [
-    "https://www.googleapis.com/auth/spreadsheets",
-    "https://www.googleapis.com/auth/drive.file",
-    "https://www.googleapis.com/auth/drive"
-    ]
-- 'CREDS = Credentials.from_service_account_file('creds.json')
-SCOPED_CREDS = CREDS.with_scopes(SCOPE)
-GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
-SHEET = GSPREAD_CLIENT.open('bmw-trivia)'
-- name in the sheet variable must be identical to the name of the googlesheet. As my sheet is named bmw_trivia, the sheet variable also contains bmw-trivia
-
 
 ## Deployment
 
@@ -91,11 +49,11 @@ SHEET = GSPREAD_CLIENT.open('bmw-trivia)'
 #### Google spreadsheet
 - Google sheet has been added to this quiz to collect user name and score and sort the highest five in descending order and then finally print the leaderboard at the end of the quiz showing the Top 5.
 
-<img width="1710" alt="Screenshot 2024-05-31 at 21 03 45" src="https://github.com/Oluwapelumi99/BMW_Trivia/assets/156908824/474d117c-3313-49a7-bb99-5552d372cf67">
+<img width="1710" alt="Screenshot 2024-06-01 at 01 54 56" src="https://github.com/Oluwapelumi99/BMW_Trivia/assets/156908824/819a6d59-e043-4a12-a12a-e472e5e9e5c4">
 
 - Leaderboard top 5 is then printed to the terminal after the game ends from the values gottten from the scoreboard spread sheet.
 
-<img width="770" alt="Screenshot 2024-06-01 at 00 34 29" src="https://github.com/Oluwapelumi99/Rock--paper-scissors/assets/156908824/02528fe8-dd29-46fe-bce1-6cf19daf7326">
+
 
 
 
@@ -131,33 +89,32 @@ SHEET = GSPREAD_CLIENT.open('bmw-trivia)'
 
 - Finally, this is what happens when the user inputs the accepted details. It can be seen that the input is accepted and the code moves on to  the next code.
 
-<img width="741" alt="Screenshot 2024-05-27 at 22 48 50" src="https://github.com/Oluwapelumi99/Rock--paper-scissors/assets/156908824/099b61b1-0039-4272-9b9a-599fdbb0e657">
+
 
 
 ###### Start game Input
 Input validation has also been used with while loops to check if they want to start the quiz and keeps asking if a wrong input is inputed.
 - This is a screenshot of the prompt that askes users if they want to start the quiz.
 
-<img width="741" alt="Screenshot 2024-05-27 at 22 48 50" src="https://github.com/Oluwapelumi99/Rock--paper-scissors/assets/156908824/099b61b1-0039-4272-9b9a-599fdbb0e657">
+
 
 - This is what happens when yes is inputed after user has been asked if they want to start the game.
 It can be seen that the quiz starts and prints the first question of the quiz to the terminal.
 
-<img width="752" alt="Screenshot 2024-05-27 at 22 58 29" src="https://github.com/Oluwapelumi99/Rock--paper-scissors/assets/156908824/70dc899a-f6be-4560-86a0-721363cc1eeb">
+
 
 - A screenshot of what happens when no is inputed to the terminal. It can be seen that the quiz ends.
 
-<img width="747" alt="Screenshot 2024-05-29 at 00 03 15" src="https://github.com/Oluwapelumi99/BMW_Trivia/assets/156908824/
-d3716040-0e89-4a99-a8ad-a129b079c691">
+
 
 
 - This is what happens when nothing was inputed to the terminal.
 
-<img width="753" alt="Screenshot 2024-05-27 at 23 07 16" src="https://github.com/Oluwapelumi99/Rock--paper-scissors/assets/156908824/10a06842-f6e2-4718-b886-417e8cde8df5">
+
 
 - This is what happens when anything asides yes or no is inputed onto the terminal.
 
-<img width="749" alt="Screenshot 2024-05-27 at 23 08 59" src="https://github.com/Oluwapelumi99/Rock--paper-scissors/assets/156908824/9a5719a3-5f8a-42b2-b061-2da441ecc552">
+
 
 
 ###### Answer input
@@ -179,15 +136,15 @@ d3716040-0e89-4a99-a8ad-a129b079c691">
 
 - If yes is printed into the terminal to try the quiz agin, the quiz starts again.
 
-<img width="783" alt="Screenshot 2024-05-30 at 00 23 41" src="https://github.com/Oluwapelumi99/BMW_Trivia/assets/156908824/bf8209fd-79d9-48ae-ae7c-bcbf02478e80">
+
 
 - If no is printed into the terminal, the quiz ends and 'Sad to see you go' is printed to the terminal.
 
-<img width="750" alt="Screenshot 2024-05-30 at 00 40 00" src="https://github.com/Oluwapelumi99/BMW_Trivia/assets/156908824/b34d67d2-2139-4f8f-b550-bb3a51efb6c3">
+
 
 - However, if anything else asides yes or no is printed to the terminal, the input is not accepted and user is asked to input a valid response.
 
-<img width="775" alt="Screenshot 2024-05-30 at 00 33 18" src="https://github.com/Oluwapelumi99/BMW_Trivia/assets/156908824/902c5c2c-2af7-4e73-866e-00e8ebcdbfc2">
+
 
 
 ## Validator Testing
@@ -196,7 +153,7 @@ d3716040-0e89-4a99-a8ad-a129b079c691">
 
 <img width="1587" alt="Screenshot 2024-05-29 at 21 43 27" src="https://github.com/Oluwapelumi99/BMW_Trivia/assets/156908824/0eeaa24c-f87d-4e30-9653-73d3e19145a7">
 
-- Errors have been fixed,excepts the blank spaces aeound the ascii area and this cannot be fixed as it will distort the ascii layout. Here is a screenshot.
+- Errors have been fixed,excepts the blank spaces around the ascii area and this cannot be fixed as it will distort the ascii layout. Here is a screenshot.
 
 <img width="1705" alt="Screenshot 2024-05-31 at 22 29 26" src="https://github.com/Oluwapelumi99/BMW_Trivia/assets/156908824/47471b5d-fea6-4b38-8e85-ba2e52117670">
 
@@ -236,7 +193,48 @@ d3716040-0e89-4a99-a8ad-a129b079c691">
 - Click create fork.
 
 ### Creating a google spreadsheet.
-
+- Create a google account first and make sure to use a personal google account.
+- Then set up your API - Application programme interface. This is so that python project can access our google sheet and get data from the sheet.
+- In order to do this, go to (https://console.cloud.google.com/). Then the first thing is to create a new project and then give the project a name, then click create.
+- Then click select project on the new project that pops up on the right side of the screen.
+- From the side menu, then select API AND SERVICES and then select library.
+- In order to access the spreadsheet, we need to enable google drive api and google sheets api.
+- Search for the google drive api and google sheets api in the library then enable both.
+- When the google drive api is enabled, on the next page click on create credentials
+- Next, on credential type, click on google drive api
+- What will you be processing? , application data
+- For the "Are you planning to use this API with Compute Engine, Kubernetes Engine, App Engine, or Cloud Functions?" question, select No, I'm not using them
+- Click Next
+- On your credentials:
+- Enter a service account name, name can be the name of your project 
+- In the Role Dropdown box choose Basic > Editor then press Continue
+- On the next page, click on the Service Account that has been created
+- On the next page, click on the Keys tab
+- Click on the Add Key dropdown and select Create New Key
+- Select JSON and then click Create. This will trigger the json file with your API credentials in it to download to your machine.
+- Search for the file in your computer
+- After the google sheets api has been enabled, you do not need to create any credentials for that.
+- Copy and paste the json file you downloaded earlier to your workspace.
+- Open the json file and copy the client email without the code, go back to the spreadsheet and click the share button on the right top corner. Paste in the client's email, make sure the editor is selected and untick notify people and then click share.
+- Rename the json file to 'creds.json' and add it to .gitignore so it cannot be tracked by git and should be kept secret.
+- In order to use google sheet api, add 2 more dependencies to your project.
+1. google oauth
+2. gspread
+- install these by using the command 'pip3 install gspread google-auth' in the terminal
+- After the packages have been installed, access them by using the following commands at the top of the run.py file
+- 'import gspread'
+- 'from google.oauth2.services_account import Credentials'
+- SCOPE = [
+    "https://www.googleapis.com/auth/spreadsheets",
+    "https://www.googleapis.com/auth/drive.file",
+    "https://www.googleapis.com/auth/drive"
+    ]
+- 'CREDS = Credentials.from_service_account_file('creds.json')
+SCOPED_CREDS = CREDS.with_scopes(SCOPE)
+GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
+SHEET = GSPREAD_CLIENT.open('bmw-trivia)'
+- name in the sheet variable must be identical to the name of the googlesheet. As my sheet is named bmw_trivia, the sheet variable also contains bmw-trivia
+- Now your sheet is connected to your project
 
 ## Deployment
 - This project has been deployed to https://www.heroku.com because heroku is better with backend languages.
