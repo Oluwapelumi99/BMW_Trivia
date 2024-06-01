@@ -27,6 +27,50 @@
 - Technologies used
 
 ## Cloning and forking
+## Creating a google spreadsheet
+
+- Create a google account first and make sure to use a personal google account.
+- Then we will set up our API - Application programme interface. This is so that python project can access our google sheet and get data from the sheet.
+- In order to do this, go to (https://console.cloud.google.com/). Then the first thing is to create a new project and then give the project a name, then click create.
+- Then click select project on the new project that pops up on the right side of the screen.
+- From the side menu, then select API AND SERVICES and then select library.
+- In order to access the spreadsheet, we need to enable google drive api and google sheets api.
+- Search for the google drive api and google sheets api in the library then enable both.
+- When the google drive api is enabled, on the next page click on create credentials
+- Next, on credential type, click on google drive api
+- What will you be processing? , application data
+- For the "Are you planning to use this API with Compute Engine, Kubernetes Engine, App Engine, or Cloud Functions?" question, select No, I'm not using them
+- Click Next
+- On your credentials:
+- Enter a service account name, name can be the name of your project 
+- In the Role Dropdown box choose Basic > Editor then press Continue
+- On the next page, click on the Service Account that has been created
+- On the next page, click on the Keys tab
+- Click on the Add Key dropdown and select Create New Key
+- Select JSON and then click Create. This will trigger the json file with your API credentials in it to download to your machine.
+- Search for the file in your computer
+- After the google sheets api has been enabled, you do not need to create any credentials for that.
+- Copy and paste the json file you downloaded earlier to your workspace.
+- Open the json file and copy the client email without the code, go back to the spreadsheet and click the share button on the right top corner. Paste in the client's email, make sure the editor is selected and untick notify people and then click share.
+- Rename the json file to 'CREDs.JSON' and add it to .gitignore so it cannot be tracked by git and should be kept secret.
+- In order to use google sheet api, add 2 more dependencies to your project.
+1. google oauth
+2. gspread
+- install these by using the command 'pip3 install gspread google-auth' in the terminal
+- After the packages have been installed, access them by using the following commands at the top of the run.py file
+- 'import gspread'
+- 'from google.oauth2.services_account import Credentials'
+- SCOPE = [
+    "https://www.googleapis.com/auth/spreadsheets",
+    "https://www.googleapis.com/auth/drive.file",
+    "https://www.googleapis.com/auth/drive"
+    ]
+- 'CREDS = Credentials.from_service_account_file('creds.json')
+SCOPED_CREDS = CREDS.with_scopes(SCOPE)
+GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
+SHEET = GSPREAD_CLIENT.open('bmw-trivia)'
+- name in the sheet variable must be identical to the name of the googlesheet. As my sheet is named bmw_trivia, the sheet variable also contains bmw-trivia
+
 
 ## Deployment
 
@@ -190,6 +234,9 @@ d3716040-0e89-4a99-a8ad-a129b079c691">
 - Optionally, in the 'Description' field, type a description of your fork.
 - Optionally, select copy the default branch only.
 - Click create fork.
+
+### Creating a google spreadsheet.
+
 
 ## Deployment
 - This project has been deployed to https://www.heroku.com because heroku is better with backend languages.
