@@ -67,33 +67,10 @@
 ## Manual testing
 - I have added the input function and I have put measures in place to make sure the right details are inputed.
 #### Input Validation
-###### Name Input
-- I have added some input validation using the if statement and the while loop. User has been requested to input their names and their input will have to be validated.
-
-- This is a picture of the prompt for users to input their names and which also shows the accepted inputs
-
-<img width="751" alt="Screenshot 2024-05-27 at 22 29 51" src="https://github.com/Oluwapelumi99/Rock--paper-scissors/assets/156908824/854eb771-fb04-4f88-a88e-feac6cea40d7">
-
-- This is a picture of what is printed after user inputs any special characters, which then prompts them again to input the correct characters because a while loop has been used.
-
-<img width="737" alt="Screenshot 2024-05-27 at 21 34 36" src="https://github.com/Oluwapelumi99/Rock--paper-scissors/assets/156908824/ca7adab6-5996-479e-a3e1-10c916f723f7">
-
-- This is a screenshot of what happens when a user inputs more than 20 characters
-
-<img width="750" alt="Screenshot 2024-05-27 at 22 42 24" src="https://github.com/Oluwapelumi99/Rock--paper-scissors/assets/156908824/f9810060-b4b3-42d6-a7b5-59eff330b760">
-
-- This is a screenshot of what happens when the user inputs a name less than 3 as 3 is the least number of characters that can be entered.
-
-<img width="745" alt="Screenshot 2024-05-27 at 22 45 12" src="https://github.com/Oluwapelumi99/Rock--paper-scissors/assets/156908824/9e363925-2e28-4a70-852a-ee8f544ed2de">
-
-- Finally, this is what happens when the user inputs the accepted details. It can be seen that the input is accepted and the code moves on to  the next code.
-
-<img width="752" alt="Screenshot 2024-06-01 at 02 32 06" src="https://github.com/Oluwapelumi99/BMW_Trivia/assets/156908824/ef691e67-74b1-4795-b62b-18d892bf6e44">
-
 
 ###### Start game Input
 Input validation has also been used with while loops to check if they want to start the quiz and keeps asking if a wrong input is inputed.
-- This is a screenshot of the prompt that askes users if they want to start the quiz.
+- This is a screenshot of the prompt that asks users if they want to start the quiz.
 
 <img width="750" alt="Screenshot 2024-06-01 at 02 12 45" src="https://github.com/Oluwapelumi99/BMW_Trivia/assets/156908824/c42e7655-36c4-4073-83c4-5e8cbd4167ad">
 
@@ -111,6 +88,29 @@ It can be seen that the quiz starts and prints the first question of the quiz to
 
 - This is what happens when anything asides yes or no is inputed onto the terminal.
 <img width="751" alt="Screenshot 2024-06-01 at 02 15 13" src="https://github.com/Oluwapelumi99/BMW_Trivia/assets/156908824/acee0500-f199-48be-988d-3e60ef6dcc4a">
+
+###### Name Input
+- I have added some input validation using the if statement and the while loop. User has been requested to input their names and their input will have to be validated.
+
+- This is a picture of the prompt for users to input their names and which also shows the accepted inputs
+
+<img width="751" alt="Screenshot 2024-05-27 at 22 29 51" src="https://github.com/Oluwapelumi99/Rock--paper-scissors/assets/156908824/854eb771-fb04-4f88-a88e-feac6cea40d7">
+
+- This is a picture of what is printed after user inputs any special characters or numbers, which then prompts them again to input the correct characters because a while loop has been used.
+
+<img width="737" alt="Screenshot 2024-05-27 at 21 34 36" src="https://github.com/Oluwapelumi99/Rock--paper-scissors/assets/156908824/ca7adab6-5996-479e-a3e1-10c916f723f7">
+
+- This is a screenshot of what happens when a user inputs more than 20 characters
+
+<img width="750" alt="Screenshot 2024-05-27 at 22 42 24" src="https://github.com/Oluwapelumi99/Rock--paper-scissors/assets/156908824/f9810060-b4b3-42d6-a7b5-59eff330b760">
+
+- This is a screenshot of what happens when the user inputs a name less than 3 as 3 is the least number of characters that can be entered.
+
+<img width="745" alt="Screenshot 2024-05-27 at 22 45 12" src="https://github.com/Oluwapelumi99/Rock--paper-scissors/assets/156908824/9e363925-2e28-4a70-852a-ee8f544ed2de">
+
+- Finally, this is what happens when the user inputs the accepted details. It can be seen that the input is accepted and the code moves on to  the next code.
+
+<img width="752" alt="Screenshot 2024-06-01 at 02 32 06" src="https://github.com/Oluwapelumi99/BMW_Trivia/assets/156908824/ef691e67-74b1-4795-b62b-18d892bf6e44">
 
 
 ###### Answer input
@@ -150,7 +150,7 @@ It can be seen that the quiz starts and prints the first question of the quiz to
 
 <img width="1587" alt="Screenshot 2024-05-29 at 21 43 27" src="https://github.com/Oluwapelumi99/BMW_Trivia/assets/156908824/0eeaa24c-f87d-4e30-9653-73d3e19145a7">
 
-- Errors have been fixed,excepts the blank spaces around the ascii area and this cannot be fixed as it will distort the ascii layout. Here is a screenshot.
+- Errors have been fixed,excepts the blank spaces from lines 32-51 around the ascii area and this cannot be fixed as it will distort the ascii layout. Here is a screenshot.
 
 <img width="1705" alt="Screenshot 2024-05-31 at 22 29 26" src="https://github.com/Oluwapelumi99/BMW_Trivia/assets/156908824/47471b5d-fea6-4b38-8e85-ba2e52117670">
 
